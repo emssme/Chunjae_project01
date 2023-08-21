@@ -14,7 +14,7 @@ import java.security.spec.InvalidParameterSpecException;
 
 public class AESTest {
     public static void main(String[] args) throws NoSuchAlgorithmException, NoSuchPaddingException, UnsupportedEncodingException, IllegalBlockSizeException, InvalidKeySpecException, InvalidParameterSpecException, BadPaddingException, InvalidKeyException, InvalidAlgorithmParameterException {
-        String oriText = "1234";
+        String oriText = "8888";
         String key = "%02x";
 
         System.out.println("원래 데이터 : "+oriText);

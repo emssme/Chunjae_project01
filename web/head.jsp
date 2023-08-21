@@ -4,30 +4,30 @@
 %>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv="Author" content="천재교육 콘텐츠 제작팀">
-<meta http-equiv="Publisher" content="천재교육 김기태">
-<meta http-equiv="Copyright" content="copyright@chunjae.co.kr">
-<title>천재교육</title>
+<meta http-equiv="Author" content="김보경">
+<meta http-equiv="Publisher" content="김보경">
+<meta http-equiv="Copyright" content="copyright@lemonedu.com">
+<title>레몬 에듀</title>
 
 <!-- 검색엔진 최적화(SEO) -->
-<meta name="Subject" content="천재교육, 천재IT교육센터">
-<meta name="Keywords" content="천재교육, 천재 IT, 교육 교재, 교과서, 스마트 교육">
-<meta name="Description" content="천재교육은 교과서 제작, 교육 교재 제작, 초등, 중등, 고등 교육에 대한 교재와 교육을 실시하는 기관입니다.">
+<meta name="Subject" content="레몬에듀, lemonedu">
+<meta name="Keywords" content="고등 강의, 인터넷 강의, 고등 교육">
+<meta name="Description" content="레몬 에듀는 고등학생의 교육 활동을 지원하는 교육 기업입니다.">
 <!-- <meta name="Robots" content="noindex, nofllow"> -->
 <meta name="robots" content="index,follow">
 
 <!-- 오픈 그래프(Open graph)-->
 <meta property="og:type" content="website">
-<meta property="og:title" content="천재교육">
-<meta property="og:description" content="앞선 생각으로 더 큰 미래의 교육을 준비하는 기업">
-<meta property="og:image" content="<%=path %>/images/chunjae_logo.png">
+<meta property="og:title" content="레몬에듀">
+<meta property="og:description" content="비타민처럼 필수적인 교육을 제공하는 레몬에듀">
+<meta property="og:image" content="<%=path %>/images/lemonedu_logo.png">
 <meta property="og:url" content="<%=path %>">
 
 <!-- 트위터 -->
-<meta name="twitter:card" content="picture">
-<meta name="twitter:title" content="천재교육">
-<meta name="twitter:description" content="앞선 생각으로 더 큰 미래의 교육을 준비하는 기업">
-<meta name="twitter:image" content="https://kktlove.github.io/web01/images/chunjae_logo.png">
+<meta name="twitter:card" content="<%=path %>/images/lemonedu_logo.png">
+<meta name="twitter:title" content="레몬에듀">
+<meta name="twitter:description" content="비타민처럼 필수적인 교육을 제공하는 레몬에듀">
+<meta name="twitter:image" content="<%=path %>/images/lemonedu_logo.png">
 
 <!-- 모바일 앱의 iOS 인 경우
 <meta property="al:ios:url" content="ios 앱 url">
@@ -45,17 +45,15 @@
 <!-- 파비콘 설정 -->
 <!-- 16x16, 24x24, 32x32, 48x48, 64x64, 96x96, 114x114, 128x128, 256x256 등을 활용-->
 <!-- 표준 파비콘 -->
-<link rel="shortcut icon" href="<%=path %>/images/logo.ico">
+<link rel="shortcut icon" href="<%=path %>/images/lemonedu_icon.png">
 <!-- 애플 계열 모바일 -->
-<link rel="apple-touch-icon-precomposed" href="<%=path %>/images/logo_64.png">
+<link rel="apple-touch-icon-precomposed" href="<%=path %>/images/lemonedu_icon.png">
 <!-- IE 계열 브라우저 -->
 <meta name="msapplication-TileColor" content="#FFFFFF">
-<meta name="msapplication-TileImage" content="<%=path %>/images/logo_48.png">
+<meta name="msapplication-TileImage" content="<%=path %>/images/lemonedu_icon.png">
 <!-- 파이어폭스, 오페라, 또는 구형 크롬/사파리 -->
-<link rel="icon" href="<%=path %>/images/logo_16.png" sizes="16x16">
-<link rel="icon" href="<%=path %>/images/logo_32.png" sizes="32x32">
-<link rel="icon" href="<%=path %>/images/logo_48.png" sizes="48x48">
-<link rel="icon" href="<%=path %>/images/logo_64.png" sizes="64x64">
+<link rel="icon" href="<%=path %>/images/lemonedu_icon.png" sizes="16x16">
+
 <script>
 document.oncontextmenu = function() { return false; }
 document.ondragstart = function() { return false; }

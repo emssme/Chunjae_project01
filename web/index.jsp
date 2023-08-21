@@ -22,8 +22,8 @@
         /* 본문 영역 스타일 */
         .contents { clear:both; }
         .contents::after { content:""; clear:both; display:block; width:100%; }
-        .vs { clear:both; width:100%; min-height:600px; background-color: deeppink;
-            position:relative; overflow:hidden; }
+        .vs { clear:both; width:100%; min-height:400px;
+            position:relative; overflow:hidden;  border-radius: 50px;}
         .img_box { position:relative; width: 100%; height:600px; overflow:hidden; }
         .img_box li { visibility:hidden; opacity:0;  transition-duration:0.7s;
             transition-delay:0.1s;    width:100%; height:600px;  }
@@ -31,8 +31,8 @@
             background-position:center center; background-size:cover; position:absolute;
             left: 0; top: 0; z-index:5; }
         .img_box li.active .bg_box { z-index:6; }
-        .img_box li.item1 .bg_box { background-image: url("./images/img_main_keyVisual01_summer.jpg"); }
-        .img_box li.item2 .bg_box { background-image: url("./images/img_main_keyVisual03.jpg"); }
+        .img_box li.item1 .bg_box { background-image: url("./images/education01.jpg"); }
+        .img_box li.item2 .bg_box { background-image: url("./images/education02.jpg");}
         .img_box li .vs_tit { position:absolute; top:180px; left:100px; z-index:10;
             font-weight: 300; font-size: 60px; line-height: 1.3; }
         .img_box li .vs_tit strong { font-weight: 500; }
@@ -60,11 +60,11 @@
         .page_tit { font-size:48px; text-align: center; padding-top:1.75em; }
 
         #page1 { background-color: #f1f2f1;
-            background-image:url("./images/bg_social_ptn01.png");
+            background-image:url("./images/education01.jpg");
             background-position:15vw 63vh; background-repeat: no-repeat; }
 
         .pic_lst { clear:both; width: 1200px; margin: 60px auto; }
-        .pic_lst li { width: 280px; margin-right:26px; height: 400px; float:left;
+        .pic_lst li { width: 380px; margin-right:26px; height: 400px; float:left;
             background-repeat: no-repeat; background-position:center center;
             filter:brightness(90%); margin-top:30px; transition:0.4s;
             box-shadow:12px 12px 12px #999; overflow:hidden;  }
@@ -72,10 +72,10 @@
         .pic_lst li a { display:block; width: 256px; height: 376px; margin: 11px;
             border:1px solid #fff; color:#fff; }
         .pic_lst li:last-child { margin-right: 0; }
-        .pic_lst li.item1 { background-image: url("./images/img_social_main01.jpg"); }
-        .pic_lst li.item2 { background-image: url("./images/img_social_main02.jpg"); }
-        .pic_lst li.item3 { background-image: url("./images/img_social_main03.jpg"); }
-        .pic_lst li.item4 { background-image: url("./images/img_social_main04.jpg"); }
+        .pic_lst li.item1 { background-image: url("./images/education01.jpg"); }
+        .pic_lst li.item2 { background-image: url("./images/education01.jpg"); }
+        .pic_lst li.item3 { background-image: url("./images/education01.jpg"); }
+        .pic_lst li.item4 { background-image: url("./images/education01.jpg"); }
         .pic_com { padding-left: 20px; padding-top: 20px; font-size:14px; }
         .pic_tit { padding-left: 20px; padding-top: 20px; font-size:18px; }
         .pic_arrow { display:block; width:110px; height:10px; border-bottom:1px solid #fff;
@@ -151,14 +151,14 @@
                 <li class="item1 active">
                     <input type="radio" name="vs_ra" id="vs_ra1" class="vs_ra" checked>
                     <div class="bg_box"></div>
-                    <h2 class="vs_tit">교육에 대한 끊임없는 도전<br>
-                        <strong>행복한 내일을 함께 합니다</strong></h2>
+                    <h2 class="vs_tit">비타민과 같은 필수적인 교육,<br>
+                        <strong>레몬에듀와 함께</strong></h2>
                 </li>
                 <li class="item2">
                     <input type="radio" name="vs_ra" id="vs_ra2" class="vs_ra">
                     <div class="bg_box"></div>
-                    <h2 class="vs_tit">“나눔의 힘! 실천의 힘!”<br>
-                        <strong>작은 따뜻함으로 세상을 <br>바꿉니다</strong>
+                    <h2 class="vs_tit">
+                        <strong>노력은 배신하지 않습니다</strong>
                     </h2>
                 </li>
             </ul>
@@ -218,33 +218,26 @@
         </script>
         <section class="page" id="page1">
             <div class="page_wrap">
-                <h2 class="page_tit">페이지 제목1</h2>
+                <h2 class="page_tit">인기 강좌</h2>
                 <ul class="pic_lst">
                     <li class="item1">
                         <a href="">
-                            <p class="pic_com">설명</p>
-                            <h3 class="pic_tit">제목</h3>
+                            <p class="pic_com">국어</p>
+                            <h3 class="pic_tit">김국어 선생님</h3>
                             <span class="pic_arrow"></span>
                         </a>
                     </li>
                     <li class="item2">
                         <a href="">
-                            <p class="pic_com">설명</p>
-                            <h3 class="pic_tit">제목</h3>
+                            <p class="pic_com">수학</p>
+                            <h3 class="pic_tit">박수학 선생님</h3>
                             <span class="pic_arrow"></span>
                         </a>
                     </li>
                     <li class="item3">
                         <a href="">
-                            <p class="pic_com">설명</p>
-                            <h3 class="pic_tit">제목</h3>
-                            <span class="pic_arrow"></span>
-                        </a>
-                    </li>
-                    <li class="item4">
-                        <a href="">
-                            <p class="pic_com">설명</p>
-                            <h3 class="pic_tit">제목</h3>
+                            <p class="pic_com">영어</p>
+                            <h3 class="pic_tit">최영어 선생님</h3>
                             <span class="pic_arrow"></span>
                         </a>
                     </li>

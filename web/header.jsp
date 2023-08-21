@@ -26,7 +26,7 @@
 </div>
 <div class="hd_wrap">
     <a href="<%=path8 %>" class="logo">
-        <img src="<%=path8 %>/images/chunjae1.png" alt="레몬에듀 로고">
+        <img src="<%=path8 %>/images/lemonedu_logo.png" alt="레몬에듀 로고">
     </a>
     <nav class="gnb">
         <ul class="menu">
