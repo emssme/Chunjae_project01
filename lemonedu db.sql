@@ -16,6 +16,10 @@ INSERT INTO MEMBER(id, pw, NAME, email, tel) VALUES("kim","1111","김영현","ki
 INSERT INTO MEMBER(id, pw, NAME, email, tel) VALUES("yoon","2222","윤도운","yoon@lemonedu.com","01022222222");
 INSERT INTO MEMBER(id, pw, NAME, email, tel) VALUES("park","3333","박성진","park@lemonedu.com","01033333333");
 INSERT INTO MEMBER(id, pw, NAME, email, tel) VALUES("kimwp","4444","김원필","kimwp@lemonedu.com","01044444444");
+INSERT INTO MEMBER(id, pw, NAME, email, tel) VALUES("shin","5555","신예찬","shin@lemonedu.com","01055555555");
+INSERT INTO MEMBER(id, pw, NAME, email, tel) VALUES("cho","6666","조원상","cho@lemonedu.com","01066666666");
+INSERT INTO MEMBER(id, pw, NAME, email, tel) VALUES("choi","7777","최상엽","choi@lemonedu.com","01077777777");
+INSERT INTO MEMBER(id, pw, NAME, email, tel) VALUES("shingi","8888","신광일","shingi@lemonedu.com","01044444444");
 
 
 SELECT * FROM MEMBER;
@@ -25,6 +29,11 @@ UPDATE MEMBER set pw='0ffe1abd1a08215353c233d6e009613e95eec4253832a761af28ff37ac
 UPDATE MEMBER set pw='79f06f8fde333461739f220090a23cb2a79f6d714bee100d0e4b4af249294619' WHERE id='kimwp';
 UPDATE MEMBER set pw='318aee3fed8c9d040d35a7fc1fa776fb31303833aa2de885354ddf3d44d8fb69' WHERE id='park';
 UPDATE MEMBER set pw='edee29f882543b956620b26d0ee0e7e950399b1c4222f5de05e06425b4c995e9' WHERE id='yoon';
+UPDATE MEMBER set pw='c1f330d0aff31c1c87403f1e4347bcc21aff7c179908723535f2b31723702525' WHERE id='shin';
+UPDATE MEMBER set pw='d7697570462f7562b83e81258de0f1e41832e98072e44c36ec8efec46786e24e' WHERE id='cho';
+UPDATE MEMBER set pw='41c991eb6a66242c0454191244278183ce58cf4a6bcd372f799e4b9cc01886af' WHERE id='choi';
+UPDATE MEMBER set pw='2926a2731f4b312c08982cacf8061eb14bf65c1a87cc5d70e864e079c6220731' WHERE id='shingi';
+
 
 COMMIT;
 	
