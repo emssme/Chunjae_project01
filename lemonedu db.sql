@@ -28,6 +28,30 @@ UPDATE MEMBER set pw='edee29f882543b956620b26d0ee0e7e950399b1c4222f5de05e06425b4
 
 COMMIT;
 	
+	
+-- 공지사항 -------------------------------------------------------------------------------------
+
+CREATE TABLE notice(
+	bno INT PRIMARY KEY AUTO_INCREMENT,
+	title VARCHAR(200) NOT NULL,
+	content VARCHAR(1000),
+	author VARCHAR(16),
+	resdate TIMESTAMP NOT NULL default CURRENT_TIMESTAMP,
+	cnt INT DEFAULT 0);
+	
+INSERT INTO notice(title, content, author) VALUES("글1","글1입니다.","admin");
+INSERT INTO notice(title, content, author) VALUES("글2","글3입니다.","admin");
+INSERT INTO notice(title, content, author) VALUES("글3","글3입니다.","admin");
+INSERT INTO notice(title, content, author) VALUES("글4","글4입니다.","admin");
+INSERT INTO notice(title, content, author) VALUES("글5","글5입니다.","admin");
+INSERT INTO notice(title, content, author) VALUES("글6","글6입니다.","admin");
+INSERT INTO notice(title, content, author) VALUES("글7","글7입니다.","admin");
+INSERT INTO notice(title, content, author) VALUES("글8","글8입니다.","admin");
+INSERT INTO notice(title, content, author) VALUES("글9","글9입니다.","admin");
+INSERT INTO notice(title, content, author) VALUES("글10","글10입니다.","admin");
+INSERT INTO notice(title, content, author) VALUES("글11","글11입니다.","admin");
+
+
 -- 게시판-----------------------------------------------------------------------------------------
 CREATE TABLE board(
 	bno INT PRIMARY KEY AUTO_INCREMENT,
