@@ -22,8 +22,6 @@ INSERT INTO MEMBER(id, pw, NAME, email, tel) VALUES("choi","7777","최상엽","c
 INSERT INTO MEMBER(id, pw, NAME, email, tel) VALUES("shingi","8888","신광일","shingi@lemonedu.com","01088888888");
 
 
-SELECT * FROM MEMBER;
-
 UPDATE MEMBER set pw='03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4' WHERE id='admin';
 UPDATE MEMBER set pw='0ffe1abd1a08215353c233d6e009613e95eec4253832a761af28ff37ac5a150c' WHERE id='kim';
 UPDATE MEMBER set pw='79f06f8fde333461739f220090a23cb2a79f6d714bee100d0e4b4af249294619' WHERE id='kimwp';
@@ -38,6 +36,8 @@ UPDATE MEMBER set pw='2926a2731f4b312c08982cacf8061eb14bf65c1a87cc5d70e864e079c6
 COMMIT;
 	
 SELECT * FROM member;
+ALTER TABLE member RENAME COLUMN regdate TO resdate;
+select * from member where id != 'admin' order by resdate;
 -- 공지사항 -------------------------------------------------------------------------------------
 
 CREATE TABLE notice(
