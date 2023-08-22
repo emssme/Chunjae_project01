@@ -31,7 +31,7 @@ font-family: 'iceSotong';
     height: 200px; top:48px;  left: 0; z-index:999; transition:0.3s; }
 .gnb .menu li a.dp1 { display:block; width:100%;
     line-height: 50px; border-bottom:2px solid #fff;
-    text-align: center; background-color: #fff; color:#333; }
+    text-align: center; background-color: #fff; color:#333; font-weight: 600;}
 .gnb .menu li:hover a.dp1 { border-bottom:2px solid yellow;
      color:#333333; }
 .gnb .menu:hover li .sub { visibility: visible; height: 240px; opacity:1; }

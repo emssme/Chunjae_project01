@@ -7,6 +7,11 @@
 <%@ page import="com.chunjae.db.*" %>
 <%@ page import="java.util.Date" %>
 <%
+    request.setCharacterEncoding("UTF-8");
+    response.setContentType("text/html; charset=UTF-8");
+    response.setCharacterEncoding("UTF-8");
+%>
+<%
     Connection con = null;
     PreparedStatement pstmt = null;
     ResultSet rs = null;
@@ -55,8 +60,7 @@
     <style>
         /* 본문 영역 스타일 */
         .contents { clear:both; min-height:100vh;
-            background-image: url("bg_visual_overview.jpg");
-            background-repeat: no-repeat; background-position:center -250px; }
+            background-repeat: no-repeat; background-position:center -250px; height: 1100px; margin-top: 2px;}
         .contents::after { content:""; clear:both; display:block; width:100%; }
 
         .page { clear:both; width: 100vw; height: 100vh; position:relative; }
@@ -70,7 +74,6 @@
             width:1200px; margin: 0 auto; text-align: right; color:#fff;
             padding-top: 28px; padding-bottom: 28px; }
         .breadcrumb a { color:#fff; }
-        .frm { clear:both; width:1200px; margin:0 auto; padding-top: 80px; }
 
         .tb1 { width:800px; margin:50px auto; }
         .tb1 th { line-height:32px; padding-top:8px; padding-bottom:8px;
@@ -85,8 +88,6 @@
         .tb1 .item3 { width:10%; text-align: center; }
         .tb1 .item4 { width:15%; text-align: center; }
 
-        .indata { display:inline-block; width:300px; height: 48px; line-height: 48px;
-            text-indent:14px; font-size:18px; }
         .inbtn { display:block;  border-radius:100px;
             min-width:140px; padding-left: 24px; padding-right: 24px; text-align: center;
             line-height: 48px; background-color: #333; color:#fff; font-size: 18px; }
@@ -104,7 +105,36 @@
     <link rel="stylesheet" href="../jquery.dataTables.css">
     <script src="../jquery.dataTables.js"></script>
     <style>
-    #myTable_length, #dataTables_filter { margin-top:20px; margin-bottom:20px; }
+        .content_header {
+            clear: both;
+            height: 250px;
+            background-image: url("/images/mypage_cover.jpg");
+            background-repeat: no-repeat;
+            background-position:center -300px;
+            background-size: cover;
+        }
+
+        .page_tit {
+            font-size:48px;
+            text-align: center;
+            padding-top:1em;
+            color:#fff;
+            padding-bottom: 2.4rem;
+        }
+
+        .breadcrumb {
+            clear:both;
+            width:1200px;
+            margin: 0 auto;
+            text-align: right;
+            color:#fff;
+            padding-top: 28px;
+            padding-bottom: 28px;
+        }
+
+        .breadcrumb a {
+            color:#fff;
+        }
     </style>
 </head>
 <body>
@@ -113,19 +143,23 @@
         <%@ include file="../header.jsp" %>
     </header>
     <div class="contents" id="contents">
-        <div class="breadcrumb">
-            <p><a href="/">HOME</a> &gt; <a href="">커뮤니티</a> &gt; <span>게시판 글 목록</span></p>
-        </div>
+
         <section class="page" id="page1">
             <div class="page_wrap">
-                <h2 class="page_tit">게시판 글 목록</h2>
-                <br><br><hr><br><br>
+                <div class="content_header">
+                    <div class="breadcrumb">
+                        <p><a href="/">Home</a> &gt; <span> 고객지원 </span> > <span> FAQ </span> </p>
+                        <h2 class="page_tit"> 고객지원 </h2>
+                    </div>
+                </div>
                 <table class="tb1" id="myTable">
                     <thead>
+                    <tr>
                         <th class="item1">글번호</th>
                         <th class="item2">글제목</th>
                         <th class="item3">작성자</th>
                         <th class="item4">작성일</th>
+                    </tr>
                     </thead>
                     <tbody>
                     <%-- 5. boardList(공지사항목록)을 테이블 태그의 tr 요소를 반복하여 출력 --%>
@@ -140,7 +174,7 @@
                             <td class="item2">
                             <%-- 6. 로그인한 사용자만 제목 부분의 a요소에 링크 중 bno 파라미터(쿼리스트링)으로 상세보기를 요청 가능--%>
                                 <% if(sid!=null) { %>
-                                <a href="/notice/getBoard.jspp?bno=<%=bd.getBno() %>"><%=bd.getTitle() %></a>
+                                <a href="/board/getboard.jsp?bno=<%=bd.getBno() %>"><%=bd.getTitle() %></a>
                                 <% } else { %>
                                 <span><%=bd.getTitle() %></span>
                                 <% } %>
@@ -164,7 +198,7 @@
                     <br><hr><br>
                     <%-- 공지사항이므로 관리자만 글 추가 기능(링크)이 적용되도록 설정 --%>
                     <% if(sid!=null || sid.equals("admin")) { %>
-                    <a href="/notice/addBoard.jspp" class="inbtn">글쓰기</a>
+                    <a href="/notice/addBoard.jsp" class="inbtn">글쓰기</a>
                     <% } else { %>
                     <p>로그인 한 사용자만 게시판의 글을 쓸 수 있습니다.<br>
                     로그인한 사용자만 글의 상세내용을 볼 수 있습니다.</p>

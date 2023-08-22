@@ -6,6 +6,7 @@
 <%@ page import="com.chunjae.dto.Board" %>
 <%@ page import="com.chunjae.db.*" %>
 <%@ page import="java.util.Date" %>
+<%@ page import="com.chunjae.dto.Notice" %>
 <%
     Connection con = null;
     PreparedStatement pstmt = null;
@@ -16,21 +17,21 @@
     con = conn.connect();
 
     //3. SQL을 실행하여 Result(공지사항목록)을 가져오기
-    String sql = "select * from board order by bno desc";
+    String sql = "select * from notice order by bno desc";
     pstmt = con.prepareStatement(sql);
     rs = pstmt.executeQuery();
 
     //4.가져온 목록을 boardList(공지사항목록)에 하나 씩 담기
-    List<Board> boardList = new ArrayList<>();
+    List<Notice> NoticeList = new ArrayList<>();
     while(rs.next()){
-        Board bd = new Board();
-        bd.setBno(rs.getInt("bno"));
-        bd.setTitle(rs.getString("title"));
-        bd.setContent(rs.getString("content"));
-        bd.setAuthor(rs.getString("author"));
-        bd.setResdate(rs.getString("resdate"));
-        bd.setCnt(rs.getInt("cnt"));
-        boardList.add(bd);
+        Notice noti = new Notice();
+        noti.setBno(rs.getInt("bno"));
+        noti.setTitle(rs.getString("title"));
+        noti.setContent(rs.getString("content"));
+        noti.setAuthor(rs.getString("author"));
+        noti.setResdate(rs.getString("resdate"));
+        noti.setCnt(rs.getInt("cnt"));
+        NoticeList.add(noti);
     }
     conn.close(rs, pstmt, con);
 %>
@@ -55,8 +56,7 @@
     <style>
         /* 본문 영역 스타일 */
         .contents { clear:both; min-height:100vh;
-            background-image: url("bg_visual_overview.jpg");
-            background-repeat: no-repeat; background-position:center -250px; }
+            background-repeat: no-repeat; background-position:center -250px; margin-top: 2px; }
         .contents::after { content:""; clear:both; display:block; width:100%; }
 
         .page { clear:both; width: 100vw; height: 100vh; position:relative; }
@@ -85,8 +85,6 @@
         .tb1 .item3 { width:10%; text-align: center; }
         .tb1 .item4 { width:15%; text-align: center; }
 
-        .indata { display:inline-block; width:300px; height: 48px; line-height: 48px;
-            text-indent:14px; font-size:18px; }
         .inbtn { display:block;  border-radius:100px;
             min-width:140px; padding-left: 24px; padding-right: 24px; text-align: center;
             line-height: 48px; background-color: #333; color:#fff; font-size: 18px; }
@@ -131,21 +129,21 @@
                     <%-- 5. boardList(공지사항목록)을 테이블 태그의 tr 요소를 반복하여 출력 --%>
                     <%
                         SimpleDateFormat ymd = new SimpleDateFormat("yyyy-MM-dd");
-                        for(Board bd:boardList) {
-                            Date d = ymd.parse(bd.getResdate());  //날짜데이터로 변경
+                        for(Notice noti : NoticeList) {
+                            Date d = ymd.parse(noti.getResdate());  //날짜데이터로 변경
                             String date = ymd.format(d);    //형식을 포함한 문자열로 변경
                     %>
                     <tr>
-                        <td class="item1"><%=bd.getBno() %></td>
+                        <td class="item1"><%=noti.getBno() %></td>
                         <td class="item2">
                             <%-- 6. 로그인한 사용자만 제목 부분의 a요소에 링크 중 bno 파라미터(쿼리스트링)으로 상세보기를 요청 가능--%>
                             <% if(sid!=null) { %>
-                            <a href="/notice/getBoard.jspp?bno=<%=bd.getBno() %>"><%=bd.getTitle() %></a>
+                            <a href="/notice/getNotice.jsp?bno=<%=noti.getBno() %>"><%=noti.getTitle() %></a>
                             <% } else { %>
-                            <span><%=bd.getTitle() %></span>
+                            <span><%=noti.getTitle() %></span>
                             <% } %>
                         </td>
-                        <td class="item3"><%=bd.getAuthor() %></td>
+                        <td class="item3"><%=noti.getAuthor() %></td>
                         <td class="item4"><%=date %></td>
                     </tr>
                     <%

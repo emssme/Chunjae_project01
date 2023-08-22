@@ -24,7 +24,7 @@
             mem.setName(rs.getString("name"));
             mem.setEmail(rs.getString("email"));
             mem.setTel(rs.getString("tel"));
-            mem.setRegdate(rs.getString("regdate"));
+            mem.setResdate(rs.getString("regdate"));
             mem.setPoint(rs.getInt("point"));
         } else {
             response.sendRedirect("/member/login.jsp");
@@ -61,7 +61,6 @@
     <style>
         /* 본문 영역 스타일 */
         .contents { clear:both; min-height:100vh;
-            background-image: url("../images/bg_visual_overview.jpg");
             background-repeat: no-repeat; background-position:center -250px; }
         .contents::after { content:""; clear:both; display:block; width:100%; }
 
@@ -86,8 +85,7 @@
             border-bottom:1px solid #333;
             padding-left: 14px; border-top:1px solid #333; }
 
-        .indata { display:inline-block; width: 500px; height: 48px; line-height: 48px;
-            text-indent:14px; font-size:18px; }
+
         .inbtn { display:block;  border-radius:100px;
             min-width:140px; padding-left: 24px; padding-right: 24px; text-align: center;
             line-height: 48px; background-color: #333; color:#fff; font-size: 18px; }
