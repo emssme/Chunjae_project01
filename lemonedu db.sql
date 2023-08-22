@@ -19,7 +19,7 @@ INSERT INTO MEMBER(id, pw, NAME, email, tel) VALUES("kimwp","4444","김원필","
 INSERT INTO MEMBER(id, pw, NAME, email, tel) VALUES("shin","5555","신예찬","shin@lemonedu.com","01055555555");
 INSERT INTO MEMBER(id, pw, NAME, email, tel) VALUES("cho","6666","조원상","cho@lemonedu.com","01066666666");
 INSERT INTO MEMBER(id, pw, NAME, email, tel) VALUES("choi","7777","최상엽","choi@lemonedu.com","01077777777");
-INSERT INTO MEMBER(id, pw, NAME, email, tel) VALUES("shingi","8888","신광일","shingi@lemonedu.com","01044444444");
+INSERT INTO MEMBER(id, pw, NAME, email, tel) VALUES("shingi","8888","신광일","shingi@lemonedu.com","01088888888");
 
 
 SELECT * FROM MEMBER;
@@ -37,7 +37,7 @@ UPDATE MEMBER set pw='2926a2731f4b312c08982cacf8061eb14bf65c1a87cc5d70e864e079c6
 
 COMMIT;
 	
-	
+SELECT * FROM member;
 -- 공지사항 -------------------------------------------------------------------------------------
 
 CREATE TABLE notice(
@@ -60,7 +60,7 @@ INSERT INTO notice(title, content, author) VALUES("글9","글9입니다.","admin
 INSERT INTO notice(title, content, author) VALUES("글10","글10입니다.","admin");
 INSERT INTO notice(title, content, author) VALUES("글11","글11입니다.","admin");
 
-
+SELECT * FROM notice;
 -- 게시판-----------------------------------------------------------------------------------------
 CREATE TABLE board(
 	bno INT PRIMARY KEY AUTO_INCREMENT,
@@ -94,8 +94,49 @@ par INT,		-- 부모 글번호 -> 질문(자신 레코드의 qno), 답변(질문�
 FOREIGN KEY(author) REFERENCES member(id) ON DELETE CASCADE 
 );
 
+INSERT INTO qna(title, content, author, lev) VALUES('질문1', '질문입니다. 1', 'kim', 0);
+UPDATE qna SET par=qno WHERE lev=0 AND qno=1;
 
+INSERT INTO qna(title, content, author, lev) VALUES('질문2', '질문입니다. 2', 'park', 0);
+UPDATE qna SET par=qno WHERE lev=0 AND qno=2;
 
+INSERT INTO qna(title, content, author, lev) VALUES('질문3', '질문입니다. 3', 'kimwp', 0);
+UPDATE qna SET par=qno WHERE lev=0 AND qno=3;
+
+INSERT INTO qna(title, content, author, lev) VALUES('질문4', '질문입니다. 4', 'choi', 0);
+UPDATE qna SET par=qno WHERE lev=0 AND qno=4;
+
+INSERT INTO qna(title, content, author, lev) VALUES('질문5', '질문입니다. 5', 'choi', 0);
+UPDATE qna SET par=qno WHERE lev=0 AND qno=5;
+
+INSERT INTO qna(title, content, author, lev) VALUES('질문6', '질문입니다. 6', 'yoon', 0);
+UPDATE qna SET par=qno WHERE lev=0 AND qno=6;
+
+INSERT INTO qna(title, content, author, lev) VALUES('질문7', '질문입니다. 7', 'kim', 0);
+UPDATE qna SET par=qno WHERE lev=0 AND qno=7;
+
+INSERT INTO qna(title, content, author, lev) VALUES('질문8', '질문입니다. 8', 'shingi', 0);
+UPDATE qna SET par=qno WHERE lev=0 AND qno=8;
+
+INSERT INTO qna(title, content, author, lev) VALUES('질문9', '질문입니다. 9', 'park', 0);
+UPDATE qna SET par=qno WHERE lev=0 AND qno=9;
+
+INSERT INTO qna(title, content, author, lev) VALUES('질문10', '질문입니다. 10', 'kimwp', 0);
+UPDATE qna SET par=qno WHERE lev=0 AND qno=10;
+
+INSERT INTO qna(title, content, author, lev, par) VALUES ('질문1에 대한 답변', '답변입니다. 1', 'admin', 1, 1);
+INSERT INTO qna(title, content, author, lev, par) VALUES ('질문2에 대한 답변', '답변입니다. 2.', 'admin', 1, 2);
+INSERT INTO qna(title, content, author, lev, par) VALUES ('질문3에 대한 답변', '답변입니다. 3', 'admin', 1, 3);
+INSERT INTO qna(title, content, author, lev, par) VALUES ('질문4에 대한 답변', '답변입니다. 4', 'admin', 1, 4);
+INSERT INTO qna(title, content, author, lev, par) VALUES ('질문5에 대한 답변', '답변입니다. 5', 'admin', 1, 5);
+INSERT INTO qna(title, content, author, lev, par) VALUES ('질문6에 대한 답변', '답변입니다. 6', 'admin', 1, 6);
+INSERT INTO qna(title, content, author, lev, par) VALUES ('질문7에 대한 답변', '답변입니다. 7', 'admin', 1, 7);
+INSERT INTO qna(title, content, author, lev, par) VALUES ('질문8에 대한 답변', '답변입니다. 8', 'admin', 1, 8);
+INSERT INTO qna(title, content, author, lev, par) VALUES ('질문9에 대한 답변', '답변입니다. 9', 'admin', 1, 9);
+INSERT INTO qna(title, content, author, lev, par) VALUES ('질문10에 대한 답변', '답변입니다. 10', 'admin', 1, 10);
+
+SELECT * FROM qna;
+DROP TABLE qna;
 -- FAQ
 CREATE TABLE faq(
 	fno INT PRIMARY KEY AUTO_INCREMENT,
