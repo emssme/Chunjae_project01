@@ -4,6 +4,10 @@
 <%@ page import="com.chunjae.db.*" %>
 <%@ page import="com.chunjae.dto.*" %>
 <%
+    request.setCharacterEncoding("UTF-8");
+    response.setContentType("text/html; charset=UTF-8");
+    response.setCharacterEncoding("UTF-8");
+
     Connection con = null;
     PreparedStatement pstmt = null;
     ResultSet rs = null;
@@ -51,10 +55,44 @@
     <script src="https://code.jquery.com/jquery-latest.js"></script>
     <link rel="stylesheet" href="../common.css">
     <link rel="stylesheet" href="../header.css">
+
+    <style>
+        /*콘텐츠 헤더*/
+        .content_header {
+            clear: both;
+            height: 250px;
+            background-image: url("/images/banner.jpg");
+            background-repeat: no-repeat;
+            background-position:center -300px;
+            background-size: cover;
+        }
+
+        .page_tit {
+            font-size:48px;
+            text-align: center;
+            padding-top:1em;
+            color:#fff;
+            padding-bottom: 2.4rem;
+        }
+
+        .breadcrumb {
+            clear:both;
+            width:1200px;
+            margin: 0 auto;
+            text-align: right;
+            color:#fff;
+            padding-top: 28px;
+            padding-bottom: 28px;
+        }
+
+        .breadcrumb a {
+            color:#fff;
+        }
+    </style>
+
     <style>
         /* 본문 영역 스타일 */
         .contents { clear:both; min-height:100vh;
-            background-image: url("bg_visual_overview.jpg");
             background-repeat: no-repeat; background-position:center -250px; }
         .contents::after { content:""; clear:both; display:block; width:100%; }
 
@@ -64,12 +102,6 @@
         .page_wrap { clear:both; width: 1200px; height: auto; margin:0 auto; }
         .page_tit { font-size:48px; text-align: center; padding-top:1em; color:#fff;
             padding-bottom: 2.4rem; }
-
-        .breadcrumb { clear:both;
-            width:1200px; margin: 0 auto; text-align: right; color:#fff;
-            padding-top: 28px; padding-bottom: 28px; }
-        .breadcrumb a { color:#fff; }
-        .frm { clear:both; width:1200px; margin:0 auto; padding-top: 80px; }
 
         .tb1 { width:800px; margin:50px auto; }
         .tb1 th { line-height:32px; padding-top:8px; padding-bottom:8px;
@@ -102,8 +134,11 @@
         <%@ include file="../header.jsp" %>
     </header>
     <div class="contents" id="contents">
-        <div class="breadcrumb">
-            <p><a href="/">HOME</a> &gt; <span>커뮤니티</span> &gt; <span>공지사항 글 수정하기</span></p>
+        <div class="content_header">
+            <div class="breadcrumb">
+                <p><a href="/">Home</a> &gt; <a href="NoticeList.jsp"> 공지사항 </a> &gt; <span>공지사항 글 수정하기</span></p>
+                <h2 class="page_tit"> 공지사항 </h2>
+            </div>
         </div>
         <section class="page" id="page1">
             <div class="page_wrap">

@@ -1,4 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
+<%
+    request.setCharacterEncoding("UTF-8");
+    response.setContentType("text/html; charset=UTF-8");
+    response.setCharacterEncoding("UTF-8");
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,8 +27,8 @@
         /* 본문 영역 스타일 */
         .contents { clear:both; }
         .contents::after { content:""; clear:both; display:block; width:100%; }
-        .vs { clear:both; width:100%; min-height:400px;
-            position:relative; overflow:hidden;  border-radius: 50px;}
+        .vs { clear:both; width:95%; min-height:400px;
+            position:relative; overflow:hidden;  border-radius: 150px; margin: 0 auto;}
         .img_box { position:relative; width: 100%; height:600px; overflow:hidden; }
         .img_box li { visibility:hidden; opacity:0;  transition-duration:0.7s;
             transition-delay:0.1s;    width:100%; height:600px;  }
@@ -31,8 +36,8 @@
             background-position:center center; background-size:cover; position:absolute;
             left: 0; top: 0; z-index:5; }
         .img_box li.active .bg_box { z-index:6; }
-        .img_box li.item1 .bg_box { background-image: url("./images/education01.jpg"); }
-        .img_box li.item2 .bg_box { background-image: url("./images/education02.jpg");}
+        .img_box li.item1 .bg_box { background-image: url("./images/slidebanner.jpg"); }
+        .img_box li.item2 .bg_box { background-image: url("./images/slidebanner2.jpg");}
         .img_box li .vs_tit { position:absolute; top:180px; left:100px; z-index:10;
             font-weight: 300; font-size: 60px; line-height: 1.3; }
         .img_box li .vs_tit strong { font-weight: 500; }
@@ -60,7 +65,6 @@
         .page_tit { font-size:48px; text-align: center; padding-top:1.75em; }
 
         #page1 { background-color: #f1f2f1;
-            background-image:url("./images/education01.jpg");
             background-position:15vw 63vh; background-repeat: no-repeat; }
 
         .pic_lst { clear:both; width: 1200px; margin: 60px auto; }
@@ -69,72 +73,21 @@
             filter:brightness(90%); margin-top:30px; transition:0.4s;
             box-shadow:12px 12px 12px #999; overflow:hidden;  }
         .pic_lst li:hover { filter:brightness(140%); margin-top: -10px; }
-        .pic_lst li a { display:block; width: 256px; height: 376px; margin: 11px;
+        .pic_lst li a { display:block; width: 358px; height: 376px; margin: 11px;
             border:1px solid #fff; color:#fff; }
         .pic_lst li:last-child { margin-right: 0; }
-        .pic_lst li.item1 { background-image: url("./images/education01.jpg"); }
-        .pic_lst li.item2 { background-image: url("./images/education01.jpg"); }
-        .pic_lst li.item3 { background-image: url("./images/education01.jpg"); }
-        .pic_lst li.item4 { background-image: url("./images/education01.jpg"); }
+        .pic_lst li.item1 { background-image: url("./images/kor.jpg"); }
+        .pic_lst li.item2 { background-image: url("./images/mat.jpg"); }
+        .pic_lst li.item3 { background-image: url("./images/eng.jpg"); }
         .pic_com { padding-left: 20px; padding-top: 20px; font-size:14px; }
         .pic_tit { padding-left: 20px; padding-top: 20px; font-size:18px; }
-        .pic_arrow { display:block; width:110px; height:10px; border-bottom:1px solid #fff;
-            margin-top: 20px; margin-left: -12px; transition:0.4s; position:relative; }
-        .pic_lst li:hover a .pic_arrow { margin-left:20px; }
-        .pic_arrow::after { content:""; display:block; width: 10px; height: 10px;
-            position:absolute; right:0; top: 0; border-bottom:1px solid #fff; transform-origin:100% 100%;
-            transform:rotate(45deg); display:none; }
-        .pic_lst li:hover a .pic_arrow::after { display:block; }
 
-        #page2 .page_wrap { width: 100%; }
-        .slide_box::-webkit-scrollbar { display:none; }
-        .slide_box { clear:both; width:calc(100vw - 350px); height:400px;
-            margin-left: 350px;  -ms-overflow-style:none;
-            scrollbar-width:none; }
-
-        .page_com { text-align: center; padding-bottom: 30px; padding-top: 30px;  }
-        .card_lst { width: 4000px; }
-        .card_lst > li { width: 320px; height: 400px; float:left; margin-right: 50px;
-            box-shadow:5px 5px 30px #888; border-radius:6px; overflow: hidden; }
-        .card_lst > li:first-child { margin-left: 30px; }
-
-        .card_lst li .thumb_box { width: 320px; height: 210px;
-            background-repeat: no-repeat; background-position: center center;
-            background-size: cover; }
-        .card_lst li a { display:block; width: 320px; height: 220px; }
-        .card_lst li.item2 .thumb_box { background-image: url("./images/thumb1.png"); }
-        .card_lst li.item3 .thumb_box { background-image: url("./images/thumb2.png"); }
-        .card_lst li.item4 .thumb_box { background-image: url("./images/thumb3.png"); }
-        .card_lst li.item5 .thumb_box { background-image: url("./images/thumb4.png"); }
-        .card_lst li.item6 .thumb_box { background-image: url("./images/thumb5.png"); }
-        .card_lst li.item7 .thumb_box { background-image: url("./images/thumb6.png"); }
-
-        .thumb_tit { height: 42px; box-sizing:border-box; font-size: 14px; color:#333; padding:14px; padding-bottom: 0; text-overflow: ellipsis;
-            overflow:hidden; display:-webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp:2;
-            margin-bottom: 60px; }
-
-        .ico_box { height: 53px; clear:both; margin-top: 30px; border-top:1px solid #eee;
-            padding-top:30px; }
-        .ico { display:block; width: 30px; height: 30px;
-            background-image: url("./images/iconset.png"); background-repeat: no-repeat;
-            float:left; margin-left: 14px; }
-        .thumb_date { float:right; margin-right: 14px;  }
-        .ico.item1 { background-position:-71px -60px; }
-        .ico.item2 { background-position:-142px -121px; }
-
-        .cate_tit { padding-left: 32px; font-size: 36px; line-height: 2; padding-top: 24px;
-            padding-bottom: 24px; }
         .cate_lst li { border-top:1px solid #333; margin-left: 14px; margin-right: 14px;
             padding-top: 32px; height: 90px;  }
         .cate_tit li a { display:block; }
-        .bd_content { width:auto; padding-right: 24px; }
-        .bd_date { padding-top: 18px; }
-
         .sl-btn-box .btn { display:block; width: 48px; height: 48px; font-size:32px;
             color:#fff; background-color:#333; text-align: center; line-height: 48px;
             font-weight: 700; cursor:pointer; position:absolute; left:100px; }
-        .sl-btn-box .btn.next { top:100px; }
-        .sl-btn-box .btn.prev { top:148px; }
     </style>
 
     <link rel="stylesheet" href="footer.css">
@@ -224,118 +177,23 @@
                         <a href="">
                             <p class="pic_com">국어</p>
                             <h3 class="pic_tit">김국어 선생님</h3>
-                            <span class="pic_arrow"></span>
                         </a>
                     </li>
                     <li class="item2">
                         <a href="">
                             <p class="pic_com">수학</p>
                             <h3 class="pic_tit">박수학 선생님</h3>
-                            <span class="pic_arrow"></span>
                         </a>
                     </li>
                     <li class="item3">
                         <a href="">
                             <p class="pic_com">영어</p>
                             <h3 class="pic_tit">최영어 선생님</h3>
-                            <span class="pic_arrow"></span>
                         </a>
                     </li>
                 </ul>
             </div>
         </section>
-        <section class="page" id="page2">
-            <div class="page_wrap">
-                <h2 class="page_tit">미디어</h2>
-                <p class="page_com">천재교육의 보도자료와 SNS 콘텐츠를 소개합니다.</p>
-                <div class="sl-btn-box">
-                    <button type="button" class="btn next">&gt;</button>
-                    <button type="button" class="btn prev">&lt;</button>
-                </div>
-                <!-- div.slide_box>ul.card_lst>li.item$*7>a>div.thumb_box+p.thumb_tit{썸네일제목$}+(div.ico_box>span.ico_item+span{아이콘$}.thumb_date{2023-07-18}) -->
-                <div class="slide_box">
-                    <ul class="card_lst">
-                        <li class="item1">
-                            <h3 class="cate_tit">언론보도</h3>
-                            <ul class="cate_lst">
-                                <li>
-                                    <a href="">
-                                        <p class="bd_content">운필력 키우는 한글 글쓰기, 유아학습지로 창의력과 표현력을 기른다.</p>
-                                        <p class="bd_date">2023-07-17</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        <p class="bd_content">천재교과서, 스마트해법-밀크T 온·오프라인 결합 상품 더블케어 천재패스 출시</p>
-                                        <p class="bd_date">2023-07-17</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="item2">
-                            <a href="">
-                                <div class="thumb_box"></div>
-                                <p class="thumb_tit">썸네일제목2 썸네일제목2 썸네일제목2 썸네일제목2 썸네일제목2 썸네일제목2 썸네일제목2썸네일제목2 썸네일제목2 썸네일제목2 썸네일제목2썸네일제목2썸네일제목2 썸네일제목2 </p>
-                                <div class="ico_box"><span class="ico item1"></span><span class="thumb_date">2023-07-18</span></div>
-                            </a>
-                        </li>
-                        <li class="item3">
-                            <a href="">
-                                <div class="thumb_box"></div>
-                                <p class="thumb_tit">썸네일제목3</p>
-                                <div class="ico_box"><span class="ico item1"></span><span class="thumb_date">2023-07-18</span></div>
-                            </a>
-                        </li>
-                        <li class="item4">
-                            <a href="">
-                                <div class="thumb_box"></div>
-                                <p class="thumb_tit">썸네일제목4</p>
-                                <div class="ico_box"><span class="ico item2"></span><span class="thumb_date">2023-07-18</span></div>
-                            </a>
-                        </li>
-                        <li class="item5">
-                            <a href="">
-                                <div class="thumb_box"></div>
-                                <p class="thumb_tit">썸네일제목5</p>
-                                <div class="ico_box"><span class="ico item1"></span><span class="thumb_date">2023-07-18</span></div>
-                            </a>
-                        </li>
-                        <li class="item6">
-                            <a href="">
-                                <div class="thumb_box"></div>
-                                <p class="thumb_tit">썸네일제목6</p>
-                                <div class="ico_box"><span class="ico item2"></span><span class="thumb_date">2023-07-18</span></div>
-                            </a>
-                        </li>
-                        <li class="item7">
-                            <a href="">
-                                <div class="thumb_box"></div>
-                                <p class="thumb_tit">썸네일제목7</p>
-                                <div class="ico_box"><span class="ico item1"></span><span class="thumb_date">2023-07-18</span></div>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-        <script>
-            $(function(){
-                $(".sl-btn-box .btn.next").click(function(){
-                    var ln = parseInt($(".card_lst").css("margin-left"));
-                    if(ln>-1110) {
-                        var mv = ln - 370;
-                        $(".card_lst").not(":animated").animate({"margin-left":mv+"px"});
-                    }
-                });
-                $(".sl-btn-box .btn.prev").click(function(){
-                    var ln = parseInt($(".card_lst").css("margin-left"));
-                    if(ln<0){
-                        var mv = ln + 370;
-                        $(".card_lst").not(":animated").animate({"margin-left":mv+"px"});
-                    }
-                });
-            });
-        </script>
     </div>
     <footer class="ft" id="ft">
         <%@ include file="footer.jsp" %>

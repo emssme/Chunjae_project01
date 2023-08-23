@@ -53,7 +53,6 @@
     <!-- 필요한 폰트를 로딩 : 구글 웹 폰트에서 폰트를 선택하여 해당 내용을 붙여 넣기 -->
     <link rel="stylesheet" href="<%=path15%>/google.css">
     <link rel="stylesheet" href="<%=path15%>/fonts.css">
-    <link rel="stylesheet" href="<%=path15%>/content_header.css">
     <link rel="stylesheet" href="<%=path15%>/common.css">
 
     <!-- 필요한 플러그인 연결 -->
@@ -90,13 +89,11 @@
     </style>
 
     <style>
-        /*
-            콘텐츠 헤더
-             */
+        /*콘텐츠 헤더*/
         .content_header {
             clear: both;
             height: 250px;
-            background-image: url("/images/mypage_cover.jpg");
+            background-image: url("/images/banner.jpg");
             background-repeat: no-repeat;
             background-position:center -300px;
             background-size: cover;

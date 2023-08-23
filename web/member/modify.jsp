@@ -3,6 +3,10 @@
 <%@ page import="com.chunjae.db.*" %>
 <%@ page import="com.chunjae.dto.*" %>
 <%
+    request.setCharacterEncoding("UTF-8");
+    response.setContentType("text/html; charset=UTF-8");
+    response.setCharacterEncoding("UTF-8");
+
     String id = (String) session.getAttribute("id");    //세션의 id 불러오기
     Connection conn = null;
     PreparedStatement pstmt = null;
@@ -25,7 +29,7 @@
             mem.setName(rs.getString("name"));
             mem.setEmail(rs.getString("email"));
             mem.setTel(rs.getString("tel"));
-            mem.setRegdate(rs.getString("regdate"));
+            mem.setResdate(rs.getString("regdate"));
             mem.setPoint(rs.getInt("point"));
             pw = mem.getPw();
         } else {
@@ -64,10 +68,44 @@
     <script src="https://code.jquery.com/jquery-latest.js"></script>
     <link rel="stylesheet" href="../common.css">
     <link rel="stylesheet" href="../header.css">
+
+    <style>
+        /*콘텐츠 헤더*/
+        .content_header {
+            clear: both;
+            height: 250px;
+            background-image: url("/images/banner.jpg");
+            background-repeat: no-repeat;
+            background-position:center -300px;
+            background-size: cover;
+        }
+
+        .page_tit {
+            font-size:48px;
+            text-align: center;
+            padding-top:1em;
+            color:#fff;
+            padding-bottom: 2.4rem;
+        }
+
+        .breadcrumb {
+            clear:both;
+            width:1200px;
+            margin: 0 auto;
+            text-align: right;
+            color:#fff;
+            padding-top: 28px;
+            padding-bottom: 28px;
+        }
+
+        .breadcrumb a {
+            color:#fff;
+        }
+    </style>
+
     <style>
         /* 본문 영역 스타일 */
         .contents { clear:both; min-height:100vh;
-            background-image: url("../images/bg_visual_overview.jpg");
             background-repeat: no-repeat; background-position:center -250px; }
         .contents::after { content:""; clear:both; display:block; width:100%; }
 
@@ -109,14 +147,17 @@
         <%@ include file="../header.jsp" %>
     </header>
     <div class="contents" id="contents">
-        <div class="breadcrumb">
-            <p><a href="">HOME</a> &gt; <span>정보수정</span></p>
+        <div class="content_header">
+            <div class="breadcrumb">
+                <p><a href="/">Home</a> &gt; <a href="mypage.jsp"> 마이페이지 </a> &gt; <span> 회원정보 수정 </span></p>
+                <h2 class="page_tit"> 회원 정보 </h2>
+            </div>
         </div>
         <section class="page" id="page1">
             <div class="page_wrap">
                 <h2 class="page_tit">회원 정보 수정</h2>
                 <hr>
-                <form action="modifypro.jsp" method="post">
+                <form action="modifyPro.jsp" method="post">
                     <table class="tb1">
                         <tbody>
                         <tr>
@@ -147,7 +188,7 @@
                         <tr>
                             <td colspan="2" class="colspan">
                                 <input type="submit" value="회원정보수정" class="inbtn">
-                                <a href="/member/mypage.jsp" class="inbtn">마이페이지로</a>
+                                <a href="mypage.jsp" class="inbtn">마이페이지로</a>
                             </td>
                         </tr>
                         </tbody>

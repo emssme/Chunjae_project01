@@ -1,8 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
+<%
+    request.setCharacterEncoding("UTF-8");
+    response.setContentType("text/html; charset=UTF-8");
+    response.setCharacterEncoding("UTF-8");
+%>
 <%-- 1. 필요한 sql, db 패키지 임포트 --%>
 <%@ page import="java.sql.*" %>
 <%@ page import="com.chunjae.db.*" %>
-<%@ include file="../encoding.jsp" %>
 <%
     /* 2. 보내온 데이터 받아오기 */
     int bno = Integer.parseInt(request.getParameter("bno"));

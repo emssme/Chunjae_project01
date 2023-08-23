@@ -1,62 +1,67 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
-<%-- 1. 필요한 라이브러리 로딩 --%>
-<%@ page import="java.sql.*" %>
-<%@ page import="java.util.*" %>
-<%@ page import="java.text.*" %>
-<%@ page import="com.chunjae.dto.Board" %>
-<%@ page import="com.chunjae.db.*" %>
-<%@ page import="java.util.Date" %>
 <%
     request.setCharacterEncoding("UTF-8");
     response.setContentType("text/html; charset=UTF-8");
     response.setCharacterEncoding("UTF-8");
 %>
+<%-- 1. 필요한 라이브러리 임포트 --%>
+<%@ page import="java.sql.*" %>
+<%@ page import="java.util.*" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.*" %>
+<%@ page import="com.chunjae.db.*" %>
+<%@ page import="com.chunjae.vo.*" %>
+<%@ page import="com.chunjae.dto.Board" %>
 <%
-    Connection con = null;
+    request.setCharacterEncoding("UTF-8");
+    response.setContentType("text/html; charset=UTF-8");
+    response.setCharacterEncoding("UTF-8");
+
+    String path17 = request.getContextPath();
+    //2. DB 연결
+    Connection conn = null;
     PreparedStatement pstmt = null;
     ResultSet rs = null;
+    DBC con = new MariaDBCon();
+    conn = con.connect();
 
-    //2. DB 연결하기
-    DBC conn = new MariaDBCon();
-    con = conn.connect();
-
-    //3. SQL을 실행하여 Result(공지사항목록)을 가져오기
+    //3. SQL을 실행하여 결과셋(ResultSet) 받아오기
     String sql = "select * from board order by bno desc";
-    pstmt = con.prepareStatement(sql);
+    pstmt = conn.prepareStatement(sql);
     rs = pstmt.executeQuery();
 
-    //4.가져온 목록을 boardList(공지사항목록)에 하나 씩 담기
     List<Board> boardList = new ArrayList<>();
-    while(rs.next()){
-        Board bd = new Board();
-        bd.setBno(rs.getInt("bno"));
-        bd.setTitle(rs.getString("title"));
-        bd.setContent(rs.getString("content"));
-        bd.setAuthor(rs.getString("author"));
-        bd.setResdate(rs.getString("resdate"));
-        bd.setCnt(rs.getInt("cnt"));
-        boardList.add(bd);
+    while(rs.next()) {
+        Board Board = new Board();
+        Board.setBno(rs.getInt("bno"));
+        Board.setTitle(rs.getString("title"));
+        Board.setAuthor(rs.getString("author"));
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date d = sdf.parse(rs.getString("resdate"));
+        Board.setResdate(sdf.format(d));
+        boardList.add(Board);
     }
-    conn.close(rs, pstmt, con);
+    con.close(rs, pstmt, conn);
 %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>공지사항 목록</title>
+    <title>묻고 답하기 목록</title>
     <%@ include file="../head.jsp" %>
     <!-- 스타일 초기화 : reset.css 또는 normalize.css -->
     <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" rel="stylesheet">
 
     <!-- 필요한 폰트를 로딩 : 구글 웹 폰트에서 폰트를 선택하여 해당 내용을 붙여 넣기 -->
-    <link rel="stylesheet" href="../google.css">
-    <link rel="stylesheet" href="../fonts.css">
+    <link rel="stylesheet" href="<%=path17%>/google.css">
+    <link rel="stylesheet" href="<%=path17%>/fonts.css">
+    <link rel="stylesheet" href="<%=path17%>/common.css">
 
     <!-- 필요한 플러그인 연결 -->
     <script src="https://code.jquery.com/jquery-latest.js"></script>
-    <link rel="stylesheet" href="../common.css">
-    <link rel="stylesheet" href="../header.css">
+    <link rel="stylesheet" href="<%=path17%>/header.css">
     <style>
         /* 본문 영역 스타일 */
         .contents { clear:both; min-height:100vh;
@@ -66,7 +71,10 @@
         .page { clear:both; width: 100vw; height: 100vh; position:relative; }
         .page::after { content:""; display:block; width: 100%; clear:both; }
 
-        .page_wrap { clear:both; width: 1200px; height: auto; margin:0 auto; }
+        .page_wrap { clear:both; height: auto; margin:0 auto; }
+        .table {
+            width: 1200px; margin: 0 auto; margin-top: 20px;
+        }
         .page_tit { font-size:48px; text-align: center; padding-top:1em; color:#fff;
             padding-bottom: 2.4rem; }
 
@@ -94,21 +102,21 @@
         .inbtn:first-child { float:left; }
         .inbtn:last-child { float:right; }
     </style>
-
-    <link rel="stylesheet" href="../footer.css">
+    <link rel="stylesheet" href="<%=path17%>/footer.css">
     <style>
-    .btn_group { clear:both; width:800px; margin:20px auto; }
-    .btn_group:after { content:""; display:block; width:100%; clear: both; }
-    .btn_group p {text-align: center;   line-height:3.6; }
+        .btn_group { clear:both; width:1200px; margin:20px auto; }
+        .btn_group:after { content:""; display:block; width:100%; clear: both; }
+        .btn_group p {text-align: center;   line-height:3.6; }
     </style>
 
-    <link rel="stylesheet" href="../jquery.dataTables.css">
-    <script src="../jquery.dataTables.js"></script>
     <style>
+        /*
+            콘텐츠 헤더
+             */
         .content_header {
             clear: both;
             height: 250px;
-            background-image: url("/images/mypage_cover.jpg");
+            background-image: url("<%=path17%>/images/banner.jpg");
             background-repeat: no-repeat;
             background-position:center -300px;
             background-size: cover;
@@ -136,6 +144,9 @@
             color:#fff;
         }
     </style>
+
+    <link rel="stylesheet" href="<%=path17%>/jquery.dataTables.css">
+    <script src="<%=path17%>/jquery.dataTables.js"></script>
 </head>
 <body>
 <div class="container">
@@ -143,65 +154,59 @@
         <%@ include file="../header.jsp" %>
     </header>
     <div class="contents" id="contents">
-
         <section class="page" id="page1">
             <div class="page_wrap">
                 <div class="content_header">
                     <div class="breadcrumb">
-                        <p><a href="/">Home</a> &gt; <span> 고객지원 </span> > <span> FAQ </span> </p>
-                        <h2 class="page_tit"> 고객지원 </h2>
+                        <p><a href="/">Home</a> &gt; <span> 커뮤니티 </span> > <span> 자유 게시판 </span> </p>
+                        <h2 class="page_tit"> 자유 게시판 </h2>
                     </div>
                 </div>
-                <table class="tb1" id="myTable">
-                    <thead>
-                    <tr>
-                        <th class="item1">글번호</th>
-                        <th class="item2">글제목</th>
-                        <th class="item3">작성자</th>
-                        <th class="item4">작성일</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <%-- 5. boardList(공지사항목록)을 테이블 태그의 tr 요소를 반복하여 출력 --%>
-                    <%
-                        SimpleDateFormat ymd = new SimpleDateFormat("yyyy-MM-dd");
-                        for(Board bd:boardList) {
-                            Date d = ymd.parse(bd.getResdate());  //날짜데이터로 변경
-                            String date = ymd.format(d);    //형식을 포함한 문자열로 변경
-                    %>
+                <div class="table">
+                    <table class="tb1" id="myTable">
+                        <thead>
                         <tr>
-                            <td class="item1"><%=bd.getBno() %></td>
-                            <td class="item2">
-                            <%-- 6. 로그인한 사용자만 제목 부분의 a요소에 링크 중 bno 파라미터(쿼리스트링)으로 상세보기를 요청 가능--%>
-                                <% if(sid!=null) { %>
-                                <a href="/board/getboard.jsp?bno=<%=bd.getBno() %>"><%=bd.getTitle() %></a>
-                                <% } else { %>
-                                <span><%=bd.getTitle() %></span>
-                                <% } %>
-                            </td>
-                            <td class="item3"><%=bd.getAuthor() %></td>
+                            <th class="item1">글번호</th>
+                            <th class="item2">글제목</th>
+                            <th class="item3">작성자</th>
+                            <th class="item4">작성일</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <%
+                            SimpleDateFormat ymd = new SimpleDateFormat("yy-MM-dd");
+                            int tot = boardList.size();
+                            for(Board bd : boardList) {
+                                Date d = ymd.parse(bd.getResdate());
+                                String date = ymd.format(d);
+                        %>
+                        <tr>
+                            <td class="item1"><%=tot %></td>
+                            <td class="item2"><%=bd.getTitle()%></td>
+                            <td class="item3"><%=bd.getAuthor()%></td>
                             <td class="item4"><%=date %></td>
                         </tr>
-                    <%
-                        }
-                    %>
-                    </tbody>
-                </table>
+                        <%
+                                tot--;
+                            }
+                        %>
+                        </tbody>
+                    </table>
+                </div>
                 <script>
-                $(document).ready( function () {
-                    $('#myTable').DataTable({
-                        order:[[0, "desc"]]
+                    $(document).ready( function () {
+                        $('#myTable').DataTable({
+                            order:[[0, "desc"]]
+                        });
                     });
-                });
                 </script>
                 <div class="btn_group">
                     <br><hr><br>
-                    <%-- 공지사항이므로 관리자만 글 추가 기능(링크)이 적용되도록 설정 --%>
-                    <% if(sid!=null || sid.equals("admin")) { %>
-                    <a href="/notice/addBoard.jsp" class="inbtn">글쓰기</a>
+                    <% if(sid!=null) { %>
+                    <a href="<%=path17%>/board/addBoard.jsp" class="inbtn">글쓰기</a>
                     <% } else { %>
                     <p>로그인 한 사용자만 게시판의 글을 쓸 수 있습니다.<br>
-                    로그인한 사용자만 글의 상세내용을 볼 수 있습니다.</p>
+                        로그인한 사용자만 글의 상세내용을 볼 수 있습니다.</p>
                     <% } %>
                 </div>
             </div>

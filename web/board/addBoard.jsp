@@ -1,4 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
+<%
+    request.setCharacterEncoding("UTF-8");
+    response.setContentType("text/html; charset=UTF-8");
+    response.setCharacterEncoding("UTF-8");
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,10 +22,44 @@
     <script src="https://code.jquery.com/jquery-latest.js"></script>
     <link rel="stylesheet" href="../common.css">
     <link rel="stylesheet" href="../header.css">
+
+    <style>
+        /*콘텐츠 헤더*/
+        .content_header {
+            clear: both;
+            height: 250px;
+            background-image: url("/images/banner.jpg");
+            background-repeat: no-repeat;
+            background-position:center -300px;
+            background-size: cover;
+        }
+
+        .page_tit {
+            font-size:48px;
+            text-align: center;
+            padding-top:1em;
+            color:#fff;
+            padding-bottom: 2.4rem;
+        }
+
+        .breadcrumb {
+            clear:both;
+            width:1200px;
+            margin: 0 auto;
+            text-align: right;
+            color:#fff;
+            padding-top: 28px;
+            padding-bottom: 28px;
+        }
+
+        .breadcrumb a {
+            color:#fff;
+        }
+    </style>
+
     <style>
         /* 본문 영역 스타일 */
         .contents { clear:both; min-height:100vh;
-            background-image: url("bg_visual_overview.jpg");
             background-repeat: no-repeat; background-position:center -250px; }
         .contents::after { content:""; clear:both; display:block; width:100%; }
 
@@ -57,8 +96,6 @@
 
     <link rel="stylesheet" href="../footer.css">
     <style>
-        .btn_group { clear:both; width:800px; margin:20px auto; }
-        .btn_group:after { content:""; display:block; width:100%; clear: both; }
         .btn_group p {text-align: center;   line-height:3.6; }
     </style>
 </head>
@@ -68,13 +105,14 @@
         <%@ include file="../header.jsp" %>
     </header>
     <div class="contents" id="contents">
-        <div class="breadcrumb">
-            <p><a href="/">HOME</a> &gt; <a href="/notice/boardList.jspp">커뮤니티</a> &gt; <span>게시판 글쓰기</span></p>
+        <div class="content_header">
+            <div class="breadcrumb">
+                <p><a href="/">Home</a> &gt; <a href=../admin/adminPage.jsp">관리자 페이지</a> &gt; <span> 회원 정보 변경 </span> </p>
+                <h2 class="page_tit"> 회원 정보 변경 </h2>
+            </div>
         </div>
         <section class="page" id="page1">
             <div class="page_wrap">
-                <h2 class="page_tit">게시판 글쓰기</h2>
-                <hr>
                 <form action="addBoardPro.jsp" method="post">
                     <table class="tb1">
                         <tbody>

@@ -56,13 +56,16 @@
     <style>
         /* 본문 영역 스타일 */
         .contents { clear:both; min-height:100vh;
-            background-repeat: no-repeat; background-position:center -250px; margin-top: 2px; }
+            background-repeat: no-repeat; background-position:center -250px; height: 1100px; margin-top: 2px;}
         .contents::after { content:""; clear:both; display:block; width:100%; }
 
         .page { clear:both; width: 100vw; height: 100vh; position:relative; }
         .page::after { content:""; display:block; width: 100%; clear:both; }
 
-        .page_wrap { clear:both; width: 1200px; height: auto; margin:0 auto; }
+        .page_wrap { clear:both; height: auto; margin:0 auto; }
+        .table {
+            width: 1200px; margin: 0 auto; margin-top: 20px;
+        }
         .page_tit { font-size:48px; text-align: center; padding-top:1em; color:#fff;
             padding-bottom: 2.4rem; }
 
@@ -70,12 +73,11 @@
             width:1200px; margin: 0 auto; text-align: right; color:#fff;
             padding-top: 28px; padding-bottom: 28px; }
         .breadcrumb a { color:#fff; }
-        .frm { clear:both; width:1200px; margin:0 auto; padding-top: 80px; }
 
         .tb1 { width:800px; margin:50px auto; }
         .tb1 th { line-height:32px; padding-top:8px; padding-bottom:8px;
             border-top:1px solid #333; border-bottom:1px solid #333;
-            background-color:deepskyblue; color:#fff; }
+            background-color:#efef9b; color:#333; }
         .tb1 td {line-height:32px; padding-top:8px; padding-bottom:8px;
             border-bottom:1px solid #333;
             padding-left: 14px; border-top:1px solid #333; }
@@ -91,18 +93,48 @@
         .inbtn:first-child { float:left; }
         .inbtn:last-child { float:right; }
     </style>
-
     <link rel="stylesheet" href="../footer.css">
     <style>
-        .btn_group { clear:both; width:800px; margin:20px auto; }
+        .btn_group { clear:both; width:1200px; margin:20px auto; }
         .btn_group:after { content:""; display:block; width:100%; clear: both; }
         .btn_group p {text-align: center;   line-height:3.6; }
     </style>
-
     <link rel="stylesheet" href="../jquery.dataTables.css">
     <script src="../jquery.dataTables.js"></script>
     <style>
-        #myTable_length, #dataTables_filter { margin-top:20px; margin-bottom:20px; }
+        /*
+            콘텐츠 헤더
+             */
+        .content_header {
+            clear: both;
+            height: 250px;
+            background-image: url("/images/banner.jpg");
+            background-repeat: no-repeat;
+            background-position:center -300px;
+            background-size: cover;
+        }
+
+        .page_tit {
+            font-size:48px;
+            text-align: center;
+            padding-top:1em;
+            color:#fff;
+            padding-bottom: 2.4rem;
+        }
+
+        .breadcrumb {
+            clear:both;
+            width:1200px;
+            margin: 0 auto;
+            text-align: right;
+            color:#fff;
+            padding-top: 28px;
+            padding-bottom: 28px;
+        }
+
+        .breadcrumb a {
+            color:#fff;
+        }
     </style>
 </head>
 <body>
@@ -111,13 +143,15 @@
         <%@ include file="../header.jsp" %>
     </header>
     <div class="contents" id="contents">
-        <div class="breadcrumb">
-            <p><a href="/">HOME</a> &gt; <a href="">커뮤니티</a> &gt; <span>공지사항 글 목록</span></p>
-        </div>
         <section class="page" id="page1">
             <div class="page_wrap">
-                <h2 class="page_tit">공지사항 목록</h2>
-                <br><br><hr><br><br>
+                <div class="content_header">
+                    <div class="breadcrumb">
+                        <p><a href="/">Home</a> &gt; <span> 커뮤니티 </span> > <span> 공지사항 </span> </p>
+                        <h2 class="page_tit"> 공지사항 </h2>
+                    </div>
+                </div>
+                <div class="table">
                 <table class="tb1" id="myTable">
                     <thead>
                     <th class="item1">글번호</th>
@@ -151,6 +185,7 @@
                     %>
                     </tbody>
                 </table>
+                </div>
                 <script>
                     $(document).ready( function () {
                         $('#myTable').DataTable({
@@ -162,7 +197,7 @@
                     <br><hr><br>
                     <%-- 공지사항이므로 관리자만 글 추가 기능(링크)이 적용되도록 설정 --%>
                     <% if(sid!=null && sid.equals("admin")) { %>
-                    <a href="/notice/addBoard.jspp" class="inbtn">글쓰기</a>
+                    <a href="/notice/addNotice.jsp" class="inbtn">글쓰기</a>
                     <% } else { %>
                     <p>관리자만 공지사항의 글을 쓸 수 있습니다.<br>
                         로그인한 사용자만 글의 상세내용을 볼 수 있습니다.</p>

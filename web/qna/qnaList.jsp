@@ -1,4 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
+<%
+    request.setCharacterEncoding("UTF-8");
+    response.setContentType("text/html; charset=UTF-8");
+    response.setCharacterEncoding("UTF-8");
+%>
 <%-- 1. 필요한 라이브러리 임포트 --%>
 <%@ page import="java.sql.*" %>
 <%@ page import="java.util.*" %>
@@ -6,8 +11,11 @@
 <%@ page import="java.text.*" %>
 <%@ page import="com.chunjae.db.*" %>
 <%@ page import="com.chunjae.vo.*" %>
-<%@ include file="../encoding.jsp" %>
+
 <%
+    request.setCharacterEncoding("UTF-8");
+    response.setContentType("text/html; charset=UTF-8");
+    response.setCharacterEncoding("UTF-8");
     String path16 = request.getContextPath();
     //2. DB 연결
     Connection conn = null;
@@ -80,7 +88,7 @@
         .tb1 { width:800px; margin:50px auto; }
         .tb1 th { line-height:32px; padding-top:8px; padding-bottom:8px;
             border-top:1px solid #333; border-bottom:1px solid #333;
-            background-color:deepskyblue; color:#fff; }
+            background-color:#efef9b; color:#000; }
         .tb1 td {line-height:32px; padding-top:8px; padding-bottom:8px;
             border-bottom:1px solid #333;
             padding-left: 14px; border-top:1px solid #333; }
@@ -110,7 +118,7 @@
         .content_header {
             clear: both;
             height: 250px;
-            background-image: url("/images/mypage_cover.jpg");
+            background-image: url("/images/banner.jpg");
             background-repeat: no-repeat;
             background-position:center -300px;
             background-size: cover;
@@ -152,8 +160,8 @@
             <div class="page_wrap">
                 <div class="content_header">
                     <div class="breadcrumb">
-                        <p><a href="/">Home</a> &gt; <span> 고객지원 </span> > <span> FAQ </span> </p>
-                        <h2 class="page_tit"> 고객지원 </h2>
+                        <p><a href="/">Home</a> &gt; <span> 고객지원 </span> > <span> 묻고 답하기 </span> </p>
+                        <h2 class="page_tit"> 묻고 답하기 </h2>
                     </div>
                 </div>
                 <div class="table">
@@ -203,7 +211,7 @@
                 <div class="btn_group">
                     <br><hr><br>
                     <% if(sid!=null) { %>
-                    <a href="<%=path16%>/qna/addQuestion.jsp" class="inbtn">글쓰기</a>
+                    <a href="<%=path16%>/qna/addQuestion.jsp?lev=0&par=0" class="inbtn">글쓰기</a>
                     <% } else { %>
                     <p>로그인 한 사용자만 게시판의 글을 쓸 수 있습니다.<br>
                         로그인한 사용자만 글의 상세내용을 볼 수 있습니다.</p>

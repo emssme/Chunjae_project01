@@ -70,7 +70,7 @@
                 <a href="<%=path8%>/faq/faqList.jsp" class="dp1">고객지원</a>
                 <ul class="sub">
                     <li><a href="<%=path8%>/faq/faqList.jsp">FAQ</a></li>
-                    <li><a href="<%=path8%>/qna/qnaList.jsp">Q & A</a></li>
+                    <li><a href="<%=path8%>/qna/qnaList.jsp">질문과 답변</a></li>
                 </ul>
             </li>
         </ul>

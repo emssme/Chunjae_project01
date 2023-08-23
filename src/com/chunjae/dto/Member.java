@@ -49,7 +49,7 @@ public class Member {
         this.tel = tel;
     }
 
-    public String getRegdate() {
+    public String getResdate() {
         return resdate;
     }
 
@@ -73,7 +73,7 @@ public class Member {
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", tel='" + tel + '\'' +
-                ", regdate='" + resdate + '\'' +
+                ", resdate='" + resdate + '\'' +
                 ", point=" + point +
                 '}';
     }

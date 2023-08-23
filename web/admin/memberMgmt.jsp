@@ -40,7 +40,7 @@
         .content_header {
             clear: both;
             height: 250px;
-            background-image: url("/images/mypage_cover.jpg");
+            background-image: url("/images/banner.jpg");
             background-repeat: no-repeat;
             background-position:center -300px;
             background-size: cover;
@@ -163,15 +163,16 @@
                         <%
                             SimpleDateFormat ymd = new SimpleDateFormat("yyyy-MM-dd");
                             for(Member member:memberList) {
-                                Date d = ymd.parse(member.getRegdate());
+                                Date d = ymd.parse(member.getResdate());
                                 String date = ymd.format(d);
                         %>
                         <tr>
                             <td class="item1"><%=member.getName()%></td>
                             <td class="item2"><%=member.getId()%></td>
-                            <td class="item3"><%=member.getRegdate()%></td>
+
+                            <td class="item3"><%=member.getResdate()%></td>
                             <td class="item4">
-                                <button class="inbtn" onclick="javascript:location.href='<%=path%>/admin/kickpro.jsp?id=<%=member.getId()%>">강퇴</button>
+                                <button class="inbtn" onclick="javascript:location.href='<%=path%>/admin/kickPro.jsp?id=<%=member.getId()%>">강퇴</button>
                             </td>
                         </tr>
                         <%

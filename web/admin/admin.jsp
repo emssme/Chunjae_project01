@@ -30,7 +30,7 @@
         .content_header {
             clear: both;
             height: 250px;
-            background-image: url("/images/mypage_cover.jpg");
+            background-image: url("/images/banner.jpg");
             background-repeat: no-repeat;
             background-position:center -300px;
             background-size: cover;
@@ -147,10 +147,10 @@
                 <p class="content_tit"> 안녕하세요, 관리자님! </p>
                 <hr>
                 <div class="item_wrap">
-                    <a href="<%=path%>/admin/modifyInfo.jsp" class="item"><img src="/images/intro1.jpg" alt="개인정보 변경 이미지"><br> 개인정보 변경 </a>
-                    <a href="<%=path%>/admin/memberMgmt.jsp" class="item"><img src="/images/intro1.jpg" alt="회원 관리 이미지"><br> 회원 관리 </a>
-                    <a href="<%=path%>/admin/qnaMgmt.jsp?page=1" class="item"><img src="/images/intro1.jpg" alt="고객지원 관리 이미지"><br> 고객지원 관리 </a>
-                    <a href="<%=path%>/admin/motherboardMgmt.jsp" class="item"><img src="/images/intro1.jpg" alt="학부모 게시판 관리 이미지"><br> 자유 게시판 관리 </a>
+                    <a href="<%=path%>/admin/modifyInfo.jsp" class="item"><img src="/images/admin.jpg" alt="개인정보 변경 이미지"><br> 개인정보 변경 </a>
+                    <a href="<%=path%>/admin/memberMgmt.jsp" class="item"><img src="/images/admin.jpg" alt="회원 관리 이미지"><br> 회원 관리 </a>
+                    <a href="<%=path%>/admin/qnaMgmt.jsp" class="item"><img src="/images/admin.jpg" alt="고객지원 관리 이미지"><br> 고객지원 관리 </a>
+                    <a href="<%=path%>/admin/boardMgmt.jsp" class="item"><img src="/images/admin.jpg" alt="학부모 게시판 관리 이미지"><br> 자유 게시판 관리 </a>
                 </div>
             </div>
         </section>

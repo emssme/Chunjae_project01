@@ -8,29 +8,37 @@
     response.setCharacterEncoding("UTF-8");
 %>
 <%
+    String path9 = request.getContextPath();
 
     String id = request.getParameter("id");
-    String path9 = request.getContextPath();
+    String name = request.getParameter("name");
+    String email = request.getParameter("email");
+    String tel = request.getParameter("tel");
 
     Connection conn = null;
     PreparedStatement pstmt = null;
+    int cnt = 0;
 
     DBC con = new MariaDBCon();
     conn = con.connect();
-    String sql = "DELETE FROM member WHERE id=?";
+    String sql = "UPDATE member SET name=?, email=?, tel=? WHERE id=?";
     pstmt = conn.prepareStatement(sql);
-    pstmt.setString(1, id);
-    int cnt = pstmt.executeUpdate();
+    pstmt.setString(1, name);
+    pstmt.setString(2, email);
+    pstmt.setString(3, tel);
+    pstmt.setString(4, id);
+    cnt = pstmt.executeUpdate();
+
     con.close(pstmt, conn);
 
     if (cnt > 0) { %>
 <script>
-    alert("<%=id%> 회원을 강퇴시켰습니다 :)");
-    location.href = "<%=path9%>/admin/memberMgmt.jsp";
+    alert("회원 정보를 수정했습니다.");
+    location.href = "<%=path9%>/admin/modifyInfo.jsp";
 </script>
 <%  } else { %>
 <script>
     alert("문제가 발생했습니다. 잠시 후 시도해주세요");
-    location.href = "<%=path9%>/admin/memberMgmt.jsp";
+    history.go(-1);
 </script>
 <% } %>

@@ -15,20 +15,20 @@
     con = conn.connect();
 
     //3. SQL을 실행하여 Result(공지사항 한 레코드)을 가져오기
-    String sql = "select * from board where bno=?";
+    String sql = "select * from notice where bno=?";
     pstmt = con.prepareStatement(sql);
     pstmt.setInt(1, bno);
     rs = pstmt.executeQuery();
 
     //4. 가져온 한 레코드를 하나의 Board 객체에 담기
-    Board bd  = new Board();
+    Notice noti  = new Notice();
     if(rs.next()){
-        bd.setBno(rs.getInt("bno"));
-        bd.setTitle(rs.getString("title"));
-        bd.setContent(rs.getString("content"));
-        bd.setAuthor(rs.getString("author"));
-        bd.setResdate(rs.getString("resdate"));
-        bd.setCnt(rs.getInt("cnt"));
+        noti.setBno(rs.getInt("bno"));
+        noti.setTitle(rs.getString("title"));
+        noti.setContent(rs.getString("content"));
+        noti.setAuthor(rs.getString("author"));
+        noti.setResdate(rs.getString("resdate"));
+        noti.setCnt(rs.getInt("cnt"));
     }
     conn.close(rs, pstmt, con);
 %>
@@ -51,10 +51,44 @@
     <script src="https://code.jquery.com/jquery-latest.js"></script>
     <link rel="stylesheet" href="../common.css">
     <link rel="stylesheet" href="../header.css">
+
+    <style>
+        /*콘텐츠 헤더*/
+        .content_header {
+            clear: both;
+            height: 250px;
+            background-image: url("../images/banner.jpg");
+            background-repeat: no-repeat;
+            background-position:center -300px;
+            background-size: cover;
+        }
+
+        .page_tit {
+            font-size:48px;
+            text-align: center;
+            padding-top:1em;
+            color:#fff;
+            padding-bottom: 2.4rem;
+        }
+
+        .breadcrumb {
+            clear:both;
+            width:1200px;
+            margin: 0 auto;
+            text-align: right;
+            color:#fff;
+            padding-top: 28px;
+            padding-bottom: 28px;
+        }
+
+        .breadcrumb a {
+            color:#fff;
+        }
+    </style>
+
     <style>
         /* 본문 영역 스타일 */
         .contents { clear:both; min-height:100vh;
-            background-image: url("bg_visual_overview.jpg");
             background-repeat: no-repeat; background-position:center -250px; }
         .contents::after { content:""; clear:both; display:block; width:100%; }
 
@@ -99,39 +133,40 @@
         <%@ include file="../header.jsp" %>
     </header>
     <div class="contents" id="contents">
-        <div class="breadcrumb">
-            <p><a href="/">HOME</a> &gt; <a href="/notice/boardList.jspp">커뮤니티</a> &gt; <span>공지사항 상세보기</span></p>
+        <div class="content_header">
+            <div class="breadcrumb">
+                <p><a href="/">Home</a> &gt; <a href="NoticeList.jsp"> 공지사항 </a> &gt; <span>공지사항 글 상세보기</span></p>
+                <h2 class="page_tit"> 공지사항 </h2>
+            </div>
         </div>
         <section class="page" id="page1">
             <div class="page_wrap">
-                <h2 class="page_tit">공지사항 상세보기</h2>
-                <hr>
                 <!-- 5. Board 객체의 내용을 출력 -->
                 <table class="tb1">
                     <tbody>
                     <tr>
                         <th>글 번호</th>
-                        <td><%=bd.getBno() %></td>
+                        <td><%=noti.getBno() %></td>
                     </tr>
                     <tr>
                         <th>글 제목</th>
-                        <td><%=bd.getTitle() %></td>
+                        <td><%=noti.getTitle() %></td>
                     </tr>
                     <tr>
                         <th>글 내용</th>
-                        <td><%=bd.getContent() %></td>
+                        <td><%=noti.getContent() %></td>
                     </tr>
                     <tr>
                         <th>작성자</th>
-                        <td><%=bd.getAuthor() %></td>
+                        <td><%=noti.getAuthor() %></td>
                     </tr>
                     <tr>
                         <th>작성일시</th>
-                        <td><%=bd.getResdate() %></td>
+                        <td><%=noti.getResdate() %></td>
                     </tr>
                     <tr>
                         <th>조회수</th>
-                        <td><%=bd.getCnt() %></td>
+                        <td><%=noti.getCnt() %></td>
                     </tr>
                     <tr>
                         <td colspan="2">
@@ -139,8 +174,8 @@
                             가능함.--%>
                             <a href="/notice/NoticeList.jsp" class="inbtn">글 목록</a>
                             <% if(sid.equals("admin")) { %>
-                            <a href="/notice/updateNotice.jsp?bno=<%=bd.getBno() %>" class="inbtn">글 수정</a>
-                            <a href="/notice/delNotice.jsp?bno=<%=bd.getBno() %>" class="inbtn">글 삭제</a>
+                            <a href="/notice/updateNotice.jsp?bno=<%=noti.getBno() %>" class="inbtn">글 수정</a>
+                            <a href="/notice/delNotice.jsp?bno=<%=noti.getBno() %>" class="inbtn">글 삭제</a>
                             <% } %>
                         </td>
                     </tr>

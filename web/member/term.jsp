@@ -1,7 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 <%
     String path5 = request.getContextPath();
+    request.setCharacterEncoding("UTF-8");
+    response.setContentType("text/html; charset=UTF-8");
+    response.setCharacterEncoding("UTF-8");
 %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,11 +24,45 @@
 
     <!-- 필요한 플러그인 연결 -->
     <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <link rel="stylesheet" href="../common.css">
     <link rel="stylesheet" href="<%=path5%>/header.css">
     <link rel="stylesheet" href="<%=path5%>/footer.css">
 
     <style>
-        @charset "UTF-8";
+        /*콘텐츠 헤더*/
+        .content_header {
+            clear: both;
+            height: 250px;
+            background-image: url("/images/mypage_cover.jpg");
+            background-repeat: no-repeat;
+            background-position:center -300px;
+            background-size: cover;
+        }
+
+        .page_tit {
+            font-size:48px;
+            text-align: center;
+            padding-top:1em;
+            color:#fff;
+            padding-bottom: 2.4rem;
+        }
+
+        .breadcrumb {
+            clear:both;
+            width:1200px;
+            margin: 0 auto;
+            text-align: right;
+            color:#fff;
+            padding-top: 28px;
+            padding-bottom: 28px;
+        }
+
+        .breadcrumb a {
+            color:#fff;
+        }
+    </style>
+
+    <style>
 
         .page {
             height: 650px;

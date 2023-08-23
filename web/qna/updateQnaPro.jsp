@@ -2,8 +2,11 @@
 <%-- 1. 필요한 라이브러리 로딩 --%>
 <%@ page import="java.sql.*" %>
 <%@ page import="com.chunjae.db.*" %>
-<%@ include file="../encoding.jsp" %>
+
 <%
+    request.setCharacterEncoding("UTF-8");
+    response.setContentType("text/html; charset=UTF-8");
+    response.setCharacterEncoding("UTF-8");
     //2. 보내온 데이터 받기
     int qno = Integer.parseInt(request.getParameter("qno"));
     String title = request.getParameter("title");

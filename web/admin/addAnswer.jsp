@@ -24,13 +24,46 @@
     <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" rel="stylesheet">
 
     <!-- 필요한 폰트를 로딩 : 구글 웹 폰트에서 폰트를 선택하여 해당 내용을 붙여 넣기 -->
-    <link rel="stylesheet" href="<%=path10%>/css/google.css">
+    <link rel="stylesheet" href="<%=path10%>/google.css">
     <!-- 필요한 플러그인 연결 -->
     <script src="https://code.jquery.com/jquery-latest.js"></script>
-    <link rel="stylesheet" href="<%=path10%>/css/common.css">
-    <link rel="stylesheet" href="<%=path10%>/css/header.css">
-    <link rel="stylesheet" href="<%=path10%>/css/content_header.css">
-    <link rel="stylesheet" href="<%=path10%>/css/footer.css">
+    <link rel="stylesheet" href="<%=path10%>/common.css">
+    <link rel="stylesheet" href="<%=path10%>/header.css">
+    <link rel="stylesheet" href="<%=path10%>/footer.css">
+
+    <style>
+        /*배너*/
+        .content_header {
+            clear: both;
+            height: 250px;
+            background-image: url("/images/banner.jpg");
+            background-repeat: no-repeat;
+            background-position:center -300px;
+            background-size: cover;
+        }
+
+        .page_tit {
+            font-size:48px;
+            text-align: center;
+            padding-top:1em;
+            color:#fff;
+            padding-bottom: 2.4rem;
+        }
+
+        .breadcrumb {
+            clear:both;
+            width:1200px;
+            margin: 0 auto;
+            text-align: right;
+            color:#fff;
+            padding-top: 28px;
+            padding-bottom: 28px;
+        }
+
+        .breadcrumb a {
+            color:#fff;
+        }
+    </style>
 
     <style>
         .contents {
@@ -166,16 +199,6 @@
             color: inherit;
         }
 
-        .board_list_wrap {
-            width: 1000px;
-            margin: 0px auto;
-            padding-bottom: 150px;
-        }
-
-        .board_title {
-            margin-bottom: 30px;
-        }
-
         .board_title strong {
             font-size: 3rem;
         }
@@ -185,10 +208,6 @@
             font-size: 1rem;
         }
 
-        .board_list {
-            width: 100%;
-            border-top: 2px solid #000;
-        }
 
         .board_list > div {
             border-bottom: 1px solid #ddd;
@@ -287,12 +306,6 @@
         .board_list .addAnswer {
             width: 10%;
             height: 30px;
-        }
-
-        .board_page {
-            margin-top: 30px;
-            text-align: center;
-            font-size: 0;
         }
 
         .board_page a {

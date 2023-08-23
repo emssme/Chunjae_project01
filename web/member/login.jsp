@@ -1,8 +1,13 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
+<%
+    String path3 = request.getContextPath();
+    request.setCharacterEncoding("UTF-8");
+    response.setContentType("text/html; charset=UTF-8");
+    response.setCharacterEncoding("UTF-8");
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- /web/member/login.jsp -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>로그인</title>
@@ -12,46 +17,102 @@
     <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" rel="stylesheet">
 
     <!-- 필요한 폰트를 로딩 : 구글 웹 폰트에서 폰트를 선택하여 해당 내용을 붙여 넣기 -->
-    <link rel="stylesheet" href="../google.css">
-    <link rel="stylesheet" href="../fonts.css">
+    <link rel="stylesheet" href="<%=path3%>/google.css">
+    <link rel="stylesheet" href="<%=path3%>/fonts.css">
+    <link rel="stylesheet" href="<%=path3%>/login.css">
 
     <!-- 필요한 플러그인 연결 -->
     <script src="https://code.jquery.com/jquery-latest.js"></script>
-    <link rel="stylesheet" href="../common.css">
-    <link rel="stylesheet" href="../header.css">
+    <script src="./jquery-1.12.4.js"></script>
+    <link rel="stylesheet" href="../css/lib/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="<%=path3%>/common.css">
+    <link rel="stylesheet" href="<%=path3%>/header.css">
+    <link rel="stylesheet" href="<%=path3%>/footer.css">
+
     <style>
-        /* 본문 영역 스타일 */
-        .contents { clear:both; min-height:100vh;
-            background-image: url("../images/bg_visual_overview.jpg");
-            background-repeat: no-repeat; background-position:center -250px; }
-        .contents::after { content:""; clear:both; display:block; width:100%; }
+        /*콘텐츠 헤더*/
+        .content_header {
+            clear: both;
+            height: 250px;
+            background-image: url("/images/banner.jpg");
+            background-repeat: no-repeat;
+            background-position:center -300px;
+            background-size: cover;
+        }
 
-        .page { clear:both; width: 100vw; height: 100vh; position:relative; }
-        .page::after { content:""; display:block; width: 100%; clear:both; }
+        .page_tit {
+            font-size:48px;
+            text-align: center;
+            padding-top:1em;
+            color:#fff;
+            padding-bottom: 2.4rem;
+        }
 
-        .page_wrap { clear:both; width: 1200px; height: auto; margin:0 auto; }
-        .page_tit { font-size:48px; text-align: center; padding-top:1em; color:#fff;
-            padding-bottom: 2.4rem; }
+        .breadcrumb {
+            clear:both;
+            width:1200px;
+            margin: 0 auto;
+            text-align: right;
+            color:#fff;
+            padding-top: 28px;
+            padding-bottom: 28px;
+        }
 
-        .breadcrumb { clear:both;
-            width:1200px; margin: 0 auto; text-align: right; color:#fff;
-            padding-top: 28px; padding-bottom: 28px; }
-        .breadcrumb a { color:#fff; }
-        .frm { clear:both; width:1200px; margin:0 auto; padding-top: 80px; }
-
-        .tb1 { width:500px; margin:0 auto; }
-        .tb1 td { width:500px; line-height: 48px; padding-top:24px; padding-bottom:24px; }
-
-        .indata { display:inline-block; width: 500px; height: 48px; line-height: 48px;
-            text-indent:14px; font-size:18px; }
-        .inbtn { display:block;  border-radius:100px;
-            min-width:140px; padding-left: 24px; padding-right: 24px; text-align: center;
-            line-height: 48px; background-color: #333; color:#fff; font-size: 18px; }
-        .inbtn:first-child { float:left; }
-        .inbtn:last-child { float:right; }
+        .breadcrumb a {
+            color:#fff;
+        }
     </style>
 
-    <link rel="stylesheet" href="../footer.css">
+    <style>
+        /*로그인*/
+        .login-wrapper{
+            text-align: center;
+            width: 500px;
+            border-radius: 10px;
+            padding: 80px 50px;
+            background-color: #eee;
+            box-sizing: border-box;
+            margin: 130px auto;
+        }
+
+        #login-form > input{
+            width: 75%;
+            height: 48px;
+            padding: 0 10px;
+            box-sizing: border-box;
+            margin-bottom: 16px;
+            border-radius: 6px;
+            background-color: #F8F8F8;
+        }
+
+        #login-form > .container input {
+            width: 75%;
+            height: 48px;
+            padding: 0 10px;
+            box-sizing: border-box;
+            margin-bottom: 16px;
+            border-radius: 6px;
+            background-color: #F8F8F8;
+        }
+
+        #login-form > input[type=button] {
+            width: 30%;
+            height: 24px;
+            background-color: #8CB964;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+        #login-form > input::placeholder{
+            color: #D2D2D2;
+        }
+        #login-form > input[type="submit"]{
+            width: 30%;
+            color: #fff;
+            font-size: 16px;
+            background-color: #8CB964;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
 <div class="wrap">
@@ -59,30 +120,37 @@
         <%@ include file="../header.jsp" %>
     </header>
     <div class="contents" id="contents">
-        <div class="breadcrumb">
-            <p><a href="">HOME</a> &gt; <span>로그인</span></p>
+        <div class="content_header">
+            <div class="breadcrumb">
+                <p><a href="/">Home</a> &gt; <span> 로그인 </span> </p>
+                <h2 class="page_tit"> 로그인 </h2>
+            </div>
         </div>
         <section class="page" id="page1">
-            <div class="page_wrap">
-                <h2 class="page_tit">로그인</h2>
-                <form action="loginpro.jsp" id="login_frm" class="frm">
-                    <table class="tb1">
-                        <tbody>
-                        <tr>
-                            <td><input type="text" name="id" id="id" class="indata" placeholder="아이디 입력" autofocus required></td>
-                        </tr>
-                        <tr>
-                            <td><input type="password" name="pw" id="pw" class="indata" placeholder="패스워드 입력" required></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="submit" value="로그인" class="inbtn">
-                                <input type="reset" value="취소" class="inbtn">
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+            <div class="login-wrapper">
+                <h2 style="font-size: 20px">로그인 하시겠습니까?</h2>
+                <br>
+                <br>
+                <form method="post" action="<%=path3%>/member/loginpro.jsp" id="login-form">
+                    <input type="text" name="id" placeholder="아이디" autofocus required>
+                    <div class="container">
+                        <input type="password" id="pw" name="pw" placeholder="비밀번호" class="active" required>
+                        <input type="button" id="showpw" class="showpw" value="비밀번호 확인하기">
+                    </div>
+                    <input type="submit" value="Login">
                 </form>
+                <script>
+                    $(function(){
+                        $('#showpw').on('click',function (){
+                            $('#pw').toggleClass('active');
+                            if ($('#pw').hasClass('active')){
+                                $('#pw').prop('type','text');
+                            } else {
+                                $('#pw').prop('type','password');
+                            }
+                        });
+                    });
+                </script>
             </div>
         </section>
     </div>
