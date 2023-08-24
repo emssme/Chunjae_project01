@@ -86,14 +86,6 @@
             padding-bottom: 5px;
         }
 
-        div.person {
-            display: inline-flex;
-            align-items: center;
-            margin-bottom: 20px;
-            font-size: 20px;
-            margin-left: 20px;
-        }
-
         input[type='radio'],
         input[type='radio']:checked {
             appearance: none;
@@ -105,15 +97,15 @@
 
         input[type='radio'] {
             background-color: #F8F8F8;
-            border: 2px solid #8CB964;
+            border: 2px solid #efef9b;
         }
         input[type='radio']:checked {
-            background-color: #8CB964;
+            background-color:#efef9b;
         }
 
 
         .tb1 label {
-            color: #8CB964;
+            color: #333;
             font-size: 20px;
             font-weight: 600;
         }
@@ -129,8 +121,8 @@
         }
 
         .tb1 .inbtn {
-            color: #ffffff;
-            background-color: #8CB964;
+            color: #333;
+            background-color: #efef9b;
             width: 100%;
             height: 30px;
             margin-top: 10px;
@@ -141,8 +133,8 @@
             border-radius: 6px;
         }
         .tb1 input[type = submit]{
-            color: #fff;
-            background-color: #8CB964;
+            color: #333;
+            background-color: #efef9b;
             width: 100%;
             height: 40px;
             margin-top: 10px;
@@ -172,12 +164,6 @@
                 <form name="frm1" action="joinpro.jsp" method="post" onsubmit="return inform(this)" >
                     <table class="tb1">
                         <tbody>
-                        <tr>
-                            <div class="person">
-                                <label><input type="radio" name="per" id="student" value="1" checked>학생</label> &nbsp;&nbsp;
-                                <label><input type="radio" name="per" id="mother" value="2">학부모</label>
-                            </div>
-                        </tr>
                         <tr>
                             <th><label for="id">아이디</label></th>
                             <td>

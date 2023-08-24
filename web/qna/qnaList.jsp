@@ -16,6 +16,7 @@
     request.setCharacterEncoding("UTF-8");
     response.setContentType("text/html; charset=UTF-8");
     response.setCharacterEncoding("UTF-8");
+
     String path16 = request.getContextPath();
     //2. DB 연결
     Connection conn = null;
@@ -41,7 +42,6 @@
         qna.setCnt(rs.getInt("cnt"));
         qna.setLev(rs.getInt("lev"));
         qna.setPar(rs.getInt("par"));
-        qna.setName(rs.getString("name"));
         qnaList.add(qna);
     }
     con.close(rs, pstmt, conn);
@@ -80,15 +80,10 @@
         .page_tit { font-size:48px; text-align: center; padding-top:1em; color:#fff;
             padding-bottom: 2.4rem; }
 
-        .breadcrumb { clear:both;
-            width:1200px; margin: 0 auto; text-align: right; color:#fff;
-            padding-top: 28px; padding-bottom: 28px; }
-        .breadcrumb a { color:#fff; }
-
-        .tb1 { width:800px; margin:50px auto; }
+        .tb1 { width:800px; margin:50px auto; vertical-align: middle;}
         .tb1 th { line-height:32px; padding-top:8px; padding-bottom:8px;
             border-top:1px solid #333; border-bottom:1px solid #333;
-            background-color:#efef9b; color:#000; }
+            background-color:#efef9b; color:#000; vertical-align: middle;}
         .tb1 td {line-height:32px; padding-top:8px; padding-bottom:8px;
             border-bottom:1px solid #333;
             padding-left: 14px; border-top:1px solid #333; }
@@ -100,7 +95,7 @@
 
         .inbtn { display:block;  border-radius:100px;
             min-width:140px; padding-left: 24px; padding-right: 24px; text-align: center;
-            line-height: 48px; background-color: #333; color:#fff; font-size: 18px; }
+            line-height: 48px; background-color: #efef9b; color:#333; font-size: 18px; border: 1px solid;}
         .inbtn:first-child { float:left; }
         .inbtn:last-child { float:right; }
     </style>
@@ -112,9 +107,7 @@
     </style>
 
     <style>
-        /*
-            콘텐츠 헤더
-             */
+        /*콘텐츠 헤더*/
         .content_header {
             clear: both;
             height: 250px;
@@ -191,7 +184,7 @@
                             <a style="padding-left:28px;" href="/qna/getQna.jsp?qno=<%=q.getQno()%>">└[답변] <%=q.getTitle() %></a>
                             <% } %>
                         </td>
-                        <td class="item3"><%=q.getName()%></td>
+                        <td class="item3"><%=q.getAuthor()%></td>
                         <td class="item4"><%=date %></td>
                     </tr>
                     <%

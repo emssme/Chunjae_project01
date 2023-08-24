@@ -19,7 +19,7 @@
     conn = con.connect();
 
     //4. sql 실행 및 실행결과 받기
-    String sql = "SELECT * FROM qnalist WHERE qno=?";
+    String sql = "SELECT * FROM qna WHERE qno=?";
     pstmt = conn.prepareStatement(sql);
     pstmt.setInt(1, qno);
 
@@ -33,7 +33,6 @@
         qna.setAuthor(rs.getString("author"));
         qna.setResdate(rs.getString("resdate"));
         qna.setCnt(rs.getInt("cnt"));
-        qna.setName(rs.getString("name"));
         qna.setLev(rs.getInt("lev"));
         qna.setPar(rs.getInt("par"));
     }
@@ -94,31 +93,45 @@
     <style>
         /* 본문 영역 스타일 */
         .contents { clear:both; min-height:100vh;
-            background-repeat: no-repeat; background-position:center -250px; }
+            background-repeat: no-repeat; background-position:center -250px; height: 1100px; margin-top: 2px;}
         .contents::after { content:""; clear:both; display:block; width:100%; }
 
         .page { clear:both; width: 100vw; height: 100vh; position:relative; }
         .page::after { content:""; display:block; width: 100%; clear:both; }
 
-        .page_wrap { clear:both; width: 1200px; height: auto; margin:0 auto; }
+        .page_wrap { clear:both; height: auto; margin:0 auto; }
+        .table {
+            width: 1200px; margin: 0 auto; margin-top: 20px;
+        }
         .page_tit { font-size:48px; text-align: center; padding-top:1em; color:#fff;
             padding-bottom: 2.4rem; }
 
-        .tb1 { width:800px; margin:50px auto; }
+        .tb1 { width:800px; margin:50px auto; vertical-align: middle;}
         .tb1 th { line-height:32px; padding-top:8px; padding-bottom:8px;
             border-top:1px solid #333; border-bottom:1px solid #333;
-            background-color:deepskyblue; color:#fff; }
+            background-color:#efef9b; color:#000; vertical-align: middle;}
         .tb1 td {line-height:32px; padding-top:8px; padding-bottom:8px;
-            border-bottom:1px solid #333;
-            padding-left: 14px; border-top:1px solid #333; }
+            border-bottom:1px solid #333; border-top:1px solid #333; }
 
-        .indata { display:inline-block; width:300px; height: 48px; line-height: 48px;
-            text-indent:14px; font-size:18px; }
-        .inbtn { display:block;  border-radius:100px;
-            min-width:100px; padding-left: 24px; padding-right: 24px; text-align: center;
-            line-height: 48px; background-color: #333; color:#fff; font-size: 18px;
-            float:left; margin-right: 20px; }
-        .inbtn:last-child { float:right; }
+        .tb1 .item1 { width:10%; text-align: center; }
+        .tb1 .item2 { width:65%; }
+        .tb1 .item3 { width:10%; text-align: center; }
+        .tb1 .item4 { width:15%; text-align: center; }
+
+        .inbtn {
+            display: inline-block;
+            border-radius: 100px;
+            width: 140px;
+            padding-left: 24px;
+            padding-right: 24px;
+            text-align: center;
+            line-height: 48px;
+            background-color: #efef9b;
+            color: #333;
+            font-size: 18px;
+            border: 1px solid #333;
+            margin: 4px;
+        }
     </style>
 
     <link rel="stylesheet" href="../footer.css">
@@ -165,13 +178,7 @@
                     </tr>
                     <tr>
                         <th>작성자</th>
-                        <td>
-                            <% if(sid!=null && sid.equals("admin")) { %>
-                            <span title="<%=qna.getAuthor()%>"><%=qna.getName() %></span>
-                            <% } else { %>
-                            <span><%=qna.getName() %></span>
-                            <% } %>
-                        </td>
+                        <td><%=qna.getAuthor()%></td>
                     </tr>
                     <tr>
                         <th>작성일시</th>

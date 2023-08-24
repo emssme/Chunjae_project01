@@ -9,7 +9,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>천재교육</title>
+    <title>레몬 에듀</title>
     <%@ include file="head.jsp" %>
 
     <!-- 스타일 초기화 : reset.css 또는 normalize.css -->
@@ -43,7 +43,7 @@
         .img_box li .vs_tit strong { font-weight: 500; }
 
         .img_box li.active { visibility: visible; opacity: 1; }
-        .vs_tit { font-size:60px; color:#fff; }
+        .vs_tit { font-size:60px; color:#fff; font-weight: bold}
         .btn_box li .vs_btn { display:block; width: 12px; height: 12px;
             background-color:rgba(255,255,255,0.8); border:2px solid #fff;
             position:absolute; top:100px; left: 100px; z-index:14; cursor:pointer;
@@ -79,8 +79,8 @@
         .pic_lst li.item1 { background-image: url("./images/kor.jpg"); }
         .pic_lst li.item2 { background-image: url("./images/mat.jpg"); }
         .pic_lst li.item3 { background-image: url("./images/eng.jpg"); }
-        .pic_com { padding-left: 20px; padding-top: 20px; font-size:14px; }
-        .pic_tit { padding-left: 20px; padding-top: 20px; font-size:18px; }
+        .pic_com { padding-left: 20px; padding-top: 20px; font-size:34px; }
+        .pic_tit { padding-left: 20px; padding-top: 20px; font-size:20px; }
 
         .cate_lst li { border-top:1px solid #333; margin-left: 14px; margin-right: 14px;
             padding-top: 32px; height: 90px;  }
@@ -104,14 +104,14 @@
                 <li class="item1 active">
                     <input type="radio" name="vs_ra" id="vs_ra1" class="vs_ra" checked>
                     <div class="bg_box"></div>
-                    <h2 class="vs_tit">비타민과 같은 필수적인 교육,<br>
+                    <h2 class="vs_tit">비타민같은 필수적인 교육,<br>
                         <strong>레몬에듀와 함께</strong></h2>
                 </li>
                 <li class="item2">
                     <input type="radio" name="vs_ra" id="vs_ra2" class="vs_ra">
                     <div class="bg_box"></div>
                     <h2 class="vs_tit">
-                        <strong>노력은 배신하지 않습니다</strong>
+                        <strong>한 슬라이스씩<br>성장하는 지식의 나무</strong>
                     </h2>
                 </li>
             </ul>

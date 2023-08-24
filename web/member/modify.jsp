@@ -33,7 +33,7 @@
             mem.setPoint(rs.getInt("point"));
             pw = mem.getPw();
         } else {
-            response.sendRedirect("/member/login.jsp");
+            response.sendRedirect("/login.jsp");
         }
     } catch(SQLException e) {
         System.out.println("SQL 구문이 처리되지 못했습니다.");
@@ -41,13 +41,7 @@
         con.close(rs, pstmt, conn);
     }
 %>
-<%
-    String path0 = request.getContextPath();
-    String pw2 = pw.substring(0, 2);
-    for(int i=0;i<pw.length()-2;i++){
-        pw2+="*";
-    } //12**  //pw2.equals(re_pw)
-%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -106,35 +100,27 @@
     <style>
         /* 본문 영역 스타일 */
         .contents { clear:both; min-height:100vh;
-            background-repeat: no-repeat; background-position:center -250px; }
+            background-repeat: no-repeat; background-position:center -250px; height: 1100px; margin-top: 2px;}
         .contents::after { content:""; clear:both; display:block; width:100%; }
 
         .page { clear:both; width: 100vw; height: 100vh; position:relative; }
         .page::after { content:""; display:block; width: 100%; clear:both; }
 
-        .page_wrap { clear:both; width: 1200px; height: auto; margin:0 auto; }
+        .page_wrap { clear:both; height: auto; margin:0 auto; }
         .page_tit { font-size:48px; text-align: center; padding-top:1em; color:#fff;
             padding-bottom: 2.4rem; }
 
-        .breadcrumb { clear:both;
-            width:1200px; margin: 0 auto; text-align: right; color:#fff;
-            padding-top: 28px; padding-bottom: 28px; }
-        .breadcrumb a { color:#fff; }
-        .frm { clear:both; width:1200px; margin:0 auto; padding-top: 80px; }
-
-        .tb1 { width:500px; margin:50px auto; }
-        .tb1 th { width:180px; line-height:32px; padding-top:8px; padding-bottom:8px;
-        border-top:1px solid #333; border-bottom:1px solid #333;
-            background-color:deepskyblue; color:#fff; }
-        .tb1 td { width:310px; line-height:32px; padding-top:8px; padding-bottom:8px;
+        .tb1 { width:800px; margin:50px auto; vertical-align: middle;}
+        .tb1 th { line-height:32px; padding-top:8px; padding-bottom:8px;
+            border-top:1px solid #333; border-bottom:1px solid #333;
+            background-color:#efef9b; color:#000; vertical-align: middle;}
+        .tb1 td {line-height:32px; padding-top:8px; padding-bottom:8px;
             border-bottom:1px solid #333;
             padding-left: 14px; border-top:1px solid #333; }
 
-        .indata { display:inline-block; width:300px; height: 48px; line-height: 48px;
-            text-indent:14px; font-size:18px; }
         .inbtn { display:block;  border-radius:100px;
             min-width:140px; padding-left: 24px; padding-right: 24px; text-align: center;
-            line-height: 48px; background-color: #333; color:#fff; font-size: 18px; }
+            line-height: 48px; background-color: #efef9b; color:#333; font-size: 18px; border: 1px solid; }
         .inbtn:first-child { float:left; }
         .inbtn:last-child { float:right; }
     </style>
@@ -157,7 +143,7 @@
             <div class="page_wrap">
                 <h2 class="page_tit">회원 정보 수정</h2>
                 <hr>
-                <form action="modifyPro.jsp" method="post">
+                <form action="modifypro.jsp" method="post">
                     <table class="tb1">
                         <tbody>
                         <tr>
@@ -168,9 +154,9 @@
                             <th>비밀번호</th>
                             <!-- re_pw에 입력한 값과 pw2의 값이 같으면, 원래 pw를 전달, 서로 다르면, re_pw로 비밀번호를 변경할 것임 -->
                             <td>
-                                <input type="text" value="<%=pw2 %>" name="re_pw" id="re_pw" class="indata" required>
-                                <input type="hidden" value="<%=pw2 %>" name="pw2" id="pw2" />
-                                <input type="hidden" value="<%=pw %>" name="pw" id="pw" />
+                                <input type="password" name="re_pw" id="re_pw" class="indata" required>
+                                <input type="hidden" name="pw2" id="pw2" />
+                                <input type="hidden" name="pw" id="pw" />
                             </td>
                         </tr>
                         <tr>

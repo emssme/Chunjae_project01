@@ -6,6 +6,7 @@
     request.setCharacterEncoding("UTF-8");
     response.setContentType("text/html; charset=UTF-8");
     response.setCharacterEncoding("UTF-8");
+    String path1 = request.getContextPath();
 
     String id = (String) session.getAttribute("id");    //세션의 id 불러오기
     Connection conn = null;
@@ -55,20 +56,20 @@
     <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" rel="stylesheet">
 
     <!-- 필요한 폰트를 로딩 : 구글 웹 폰트에서 폰트를 선택하여 해당 내용을 붙여 넣기 -->
-    <link rel="stylesheet" href="../google.css">
-    <link rel="stylesheet" href="../fonts.css">
+    <link rel="stylesheet" href="<%=path1%>/google.css">
+    <link rel="stylesheet" href="<%=path1%>/fonts.css">
 
     <!-- 필요한 플러그인 연결 -->
     <script src="https://code.jquery.com/jquery-latest.js"></script>
-    <link rel="stylesheet" href="../common.css">
-    <link rel="stylesheet" href="../header.css">
+    <link rel="stylesheet" href="<%=path1%>/common.css">
+    <link rel="stylesheet" href="<%=path1%>/header.css">
 
     <style>
         /*콘텐츠 헤더*/
         .content_header {
             clear: both;
             height: 250px;
-            background-image: url("/images/banner.jpg");
+            background-image: url("<%=path1%>/images/banner.jpg");
             background-repeat: no-repeat;
             background-position:center -300px;
             background-size: cover;
@@ -100,33 +101,33 @@
     <style>
         /* 본문 영역 스타일 */
         .contents { clear:both; min-height:100vh;
-            background-repeat: no-repeat; background-position:center -250px; }
+            background-repeat: no-repeat; background-position:center -250px; height: 1100px; margin-top: 2px;}
         .contents::after { content:""; clear:both; display:block; width:100%; }
 
         .page { clear:both; width: 100vw; height: 100vh; position:relative; }
         .page::after { content:""; display:block; width: 100%; clear:both; }
 
-        .page_wrap { clear:both; width: 1200px; height: auto; margin:0 auto; }
+        .page_wrap { clear:both; height: auto; margin:0 auto; }
+        .page_wrap p { text-align: center; }
         .page_tit { font-size:48px; text-align: center; padding-top:1em; color:#fff;
             padding-bottom: 2.4rem; }
 
-        .tb1 { width:500px; margin:50px auto; }
-        .tb1 th { width:180px; line-height:32px; padding-top:8px; padding-bottom:8px;
-        border-top:1px solid #333; border-bottom:1px solid #333;
-            background-color:deepskyblue; color:#fff; }
-        .tb1 td { width:310px; line-height:32px; padding-top:8px; padding-bottom:8px;
+        .tb1 { width:800px; margin:50px auto; vertical-align: middle;}
+        .tb1 th { line-height:32px; padding-top:8px; padding-bottom:8px;
+            border-top:1px solid #333; border-bottom:1px solid #333;
+            background-color:#efef9b; color:#000; vertical-align: middle; width: 25%}
+        .tb1 td {line-height:32px; padding-top:8px; padding-bottom:8px;
             border-bottom:1px solid #333;
             padding-left: 14px; border-top:1px solid #333; }
 
-
         .inbtn { display:block;  border-radius:100px;
             min-width:140px; padding-left: 24px; padding-right: 24px; text-align: center;
-            line-height: 48px; background-color: #333; color:#fff; font-size: 18px; }
+            line-height: 48px; background-color: #efef9b; color:#333; font-size: 18px; border: 1px solid;}
         .inbtn:first-child { float:left; }
         .inbtn:last-child { float:right; }
     </style>
 
-    <link rel="stylesheet" href="../footer.css">
+    <link rel="stylesheet" href="<%=path1%>/footer.css">
 </head>
 <body>
 <div class="wrap">
@@ -177,7 +178,7 @@
                     </tr>
                     <tr>
                         <td colspan="2" class="colspan">
-                            <a href="/modify.jsp" class="inbtn">회원정보수정</a>
+                            <a href="<%=path1%>/member/modify.jsp" class="inbtn">회원정보수정</a>
                             <a href="/" class="inbtn">메인으로</a>
                         </td>
                     </tr>
@@ -185,7 +186,6 @@
                 </table>
                 <p>
                     탈퇴시에는 온라인 상담을 이용하시기 바랍니다.<br>
-
                 </p>
             </div>
         </section>

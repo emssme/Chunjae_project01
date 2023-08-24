@@ -15,10 +15,8 @@
             <li class="locate">
                 <select name="sel" id="sel" onchange="loc()">
                     <option value="">FAMILY LINK</option>
-                    <option value="https://chunjaetext.co.kr/">천재교과서</option>
-                    <option value="http://www.milkt.co.kr/Main/Main_new">밀크T</option>
-                    <option value="http://www.prinpia.co.kr/">프린피아</option>
-                    <option value="http://www.edumon.co.kr/intro/index.asp">에듀몬</option>
+                    <option value="">레몬참고서</option>
+                    <option value="">레몬T</option>
                 </select>
             </li>
         </ul>
@@ -35,20 +33,17 @@
 </div>
 <div class="ft_wrap2">
     <p class="copyright">
-        <span>(주)천재교육</span>
+        <span>레몬 에듀</span>
         <span>서울시 금천구 가산로9길 54</span>
-        <span>대표자 강희철</span>
-        <span>사업자등록번호 119-81-19350</span>
-        <span>통신판매신고번호 제18-439호</span>
-        <span class="end">부가통신사업신고 016712</span>
+        <span>대표자 김보경</span>
+        <span>사업자등록번호 000-00-00000</span>
+        <span>통신판매신고번호 제00-000호</span>
+        <span class="end">부가통신사업신고 000000</span>
     </p>
     <p class="copyright">
-        <span>천재교육 1577-0902</span>
-        <span>리틀천재 1577-0218</span>
-        <span>월간우등생학습 1577-6226</span>
-        <span>밀크T초등 1577-1533</span>
-        <span>밀크T중학 1522-5533</span>
-        <span class="end">밀크T고등 1522-5533</span>
+        <span>레몬에듀 0000-0000</span>
+        <span>레몬참고서 1111-1111</span>
+        <span>레몬T 2222-2222</span>
     </p>
-    <p class="cp">COPYRIGHT 1981-2023 CHUNJAE EDUCATION INC. ALL RIGHTS RESERVED.</p>
+    <p class="cp">COPYRIGHT 1981-2023 LEMONEDU EDUCATION INC. ALL RIGHTS RESERVED.</p>
 </div>

@@ -5,7 +5,6 @@ public class Qna {
     private String title;
     private String content;
     private String author;
-    private String name;
     private String resdate;
     private int cnt;
     private int lev;
@@ -41,14 +40,6 @@ public class Qna {
 
     public void setAuthor(String author) {
         this.author = author;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getResdate() {
@@ -90,7 +81,6 @@ public class Qna {
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
                 ", author='" + author + '\'' +
-                ", name='" + name + '\'' +
                 ", resdate='" + resdate + '\'' +
                 ", cnt=" + cnt +
                 ", lev=" + lev +

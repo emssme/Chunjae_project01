@@ -96,20 +96,20 @@
         }
 
         #login-form > input[type=button] {
-            width: 30%;
+            width: 75%;
             height: 24px;
-            background-color: #8CB964;
-            color: #ffffff;
+            background-color: #efef9b;
+            color: #333;
             margin-bottom: 10px;
         }
         #login-form > input::placeholder{
             color: #D2D2D2;
         }
         #login-form > input[type="submit"]{
-            width: 30%;
-            color: #fff;
+            width: 75%;
             font-size: 16px;
-            background-color: #8CB964;
+            background-color: #efef9b;
+            color: #333;
             margin-top: 10px;
         }
     </style>

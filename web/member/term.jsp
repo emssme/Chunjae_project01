@@ -93,8 +93,8 @@
             padding-right: 24px;
             text-align: center;
             line-height: 48px;
-            background-color: #8CB964;
-            color:#fff;
+            background-color: #efef9b;
+            color:#333;
             font-size: 18px;
         }
         #ck_item1 {

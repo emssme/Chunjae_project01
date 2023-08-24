@@ -65,32 +65,31 @@
     <style>
         /* 본문 영역 스타일 */
         .contents { clear:both; min-height:100vh;
-            background-repeat: no-repeat; background-position:center -250px; }
+            background-repeat: no-repeat; background-position:center -250px; height: 1100px; margin-top: 2px;}
         .contents::after { content:""; clear:both; display:block; width:100%; }
 
         .page { clear:both; width: 100vw; height: 100vh; position:relative; }
         .page::after { content:""; display:block; width: 100%; clear:both; }
 
-        .page_wrap { clear:both; width: 1200px; height: auto; margin:0 auto;}
-        .page_tit { font-size:48px; text-align: center; padding-top:1em; color:#fff;
-            padding-bottom: 2.4rem;}
+        .page_wrap { clear:both; height: auto; margin:0 auto; }
 
-        .tb1 { width:800px; margin:50px auto; }
-        .tb1 th { width:150px; line-height:32px; padding-top:8px; padding-bottom:8px;
+        .page_tit { font-size:48px; text-align: center; padding-top:1em; color:#fff;
+            padding-bottom: 2.4rem; }
+
+        .tb1 { width:800px; margin:50px auto; vertical-align: middle;}
+        .tb1 th { line-height:32px; padding-top:8px; padding-bottom:8px;
             border-top:1px solid #333; border-bottom:1px solid #333;
-            background-color:deepskyblue; color:#fff; }
-        .tb1 td { width:650px; line-height:32px; padding-top:8px; padding-bottom:8px;
+            background-color:#efef9b; color:#000; vertical-align: middle;}
+        .tb1 td {line-height:32px; padding-top:8px; padding-bottom:8px;
             border-bottom:1px solid #333;
             padding-left: 14px; border-top:1px solid #333; }
 
-        .indata { display:inline-block; width:600px; height: 48px; line-height: 48px;
-            padding:14px; font-size:18px; }
-        .indata2 { width: 600px; padding: 14px; font-size:18px; }
         .inbtn { display:block;  border-radius:100px;
             min-width:140px; padding-left: 24px; padding-right: 24px; text-align: center;
-            line-height: 48px; background-color: #333; color:#fff; font-size: 18px; }
+            line-height: 48px; background-color: #efef9b; color:#333; font-size: 18px; border: 1px solid #333; }
         .inbtn:first-child { float:left; }
         .inbtn:last-child { float:right; }
+        textarea{ resize: none;}
     </style>
 
     <link rel="stylesheet" href="../footer.css">

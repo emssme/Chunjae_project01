@@ -65,23 +65,13 @@
             background-repeat: no-repeat; background-position:center -250px; height: 1100px; margin-top: 2px;}
         .contents::after { content:""; clear:both; display:block; width:100%; }
 
-        .page { clear:both; width: 100vw; height: 100vh; position:relative; }
+        .page {clear:both;width: 1200px;height: 100vh;position:relative;margin: 0 auto;margin-top: 20px;}
         .page::after { content:""; display:block; width: 100%; clear:both; }
 
-        .page_wrap {clear:both; height: auto; margin:0 auto; width: 1200px;
-            margin-top: 20px;}
+        .page_wrap { clear:both; height: auto; margin:0 auto; }
+
         .page_tit { font-size:48px; text-align: center; padding-top:1em; color:#fff;
             padding-bottom: 2.4rem; }
-        .content_tit{
-            font-size: 20px; font-weight: 600; margin-bottom: 20px;
-        }
-
-        .tb1 th { line-height:32px; padding-top:8px; padding-bottom:8px;
-            border-top:1px solid #333; border-bottom:1px solid #333;
-            background-color:deepskyblue; color:#fff; }
-        .tb1 td {line-height:32px; padding-top:8px; padding-bottom:8px;
-            border-bottom:1px solid #333;
-            padding-left: 14px; border-top:1px solid #333; }
 
     </style>
     <style>
@@ -148,7 +138,6 @@
         </div>
         <section class="page" id="page1">
             <div class="page_wrap">
-                <p class="content_tit"> 자주 묻는 질문 </p>
                 <ul class="qnalist">
                     <% for(Faq f:faqList) { %>
                     <li>

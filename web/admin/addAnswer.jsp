@@ -117,8 +117,8 @@
         }
         .tb1 .label {
             width: 10%;
-            background-color: #8CB964;
-            color: #fff;
+            background-color: #efef9b;
+            color: #333;
         }
         .tb1 .label + td {
             width: 40%;
@@ -136,8 +136,8 @@
         .tb2 tr td:first-child {
             width: 10%;
             height: 55px;
-            background-color: #8CB964;
-            color: #fff;
+            background-color: #efef9b;
+            color: #333;
         }
         .tb2 tr:last-child td {
             border: none;
@@ -178,8 +178,8 @@
             font-weight: bold;
             font-size: 15px;
             line-height: 48px;
-            background-color: #8CB964;
-            color:#fff;
+            background-color: #efef9b;
+            color:#333;
             margin: 50px 0px 100px 0px;
         }
     </style>
@@ -215,10 +215,6 @@
             height: 60px;
         }
 
-        .board_list > div.top {
-            border-bottom: 1px solid #999;
-        }
-
         .board_list > div:last-child {
             border-bottom: 1px solid #000;
         }
@@ -234,78 +230,14 @@
             font-weight: 600;
         }
 
-        .board_list .id {
-            width: 30%;
-        }
-
-        .board_list .name {
-            width: 30%;
-        }
-
-        .board_list .date {
-            width: 30%;
-        }
-
-        .board_list .kick {
-            width: 10%;
-            height: 30px;
-        }
-
         .board_list button {
             width: 90%;
             height: 100%;
             border-radius: 10px;
-            background-color: #8CB964;
-            border: 1px solid #8CB964;
+            background-color: #efef9b;
+            border: 1px solid #efef9b;
             color: #fff;
             cursor: pointer;
-        }
-
-        .board_list .result {
-            padding: 25px;
-            text-align: center;
-            font-size: 13pt;
-        }
-
-        .board_list .bno {
-            width: 10%;
-        }
-
-        .board_list .title {
-            width: 35%;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .board_list .qTitle {
-            width: 45%;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .board_list .author {
-            width: 15%;
-        }
-
-        .board_list .resdate {
-            width: 20%;
-        }
-
-        .board_list .modify {
-            width: 10%;
-            height: 30px;
-        }
-
-        .board_list .delete {
-            width: 10%;
-            height: 30px;
-        }
-
-        .board_list .addAnswer {
-            width: 10%;
-            height: 30px;
         }
 
         .board_page a {
@@ -317,21 +249,6 @@
             border: 1px solid #ddd;
             border-left: 0;
             line-height: 32px;
-        }
-
-        .board_page a.bt {
-            font-size: 1.2rem;
-            letter-spacing: -1px;
-        }
-
-        .board_page a.num {
-            font-size: 1rem;
-        }
-
-        .board_page a.num.on {
-            border-color: #8CB964;
-            background: #8CB964;
-            color: #fff;
         }
 
         .board_page a:first-child {
@@ -349,7 +266,7 @@
         DBC con = new MariaDBCon();
         conn = con.connect();
 
-        String sql = "SELECT qno, title, content, q.resdate, name FROM qna q, member b WHERE q.author = b.id AND qno = ?;";
+        String sql = "SELECT qno, title, content, q.resdate, author FROM qna q, member b WHERE q.author = b.id AND qno = ?;";
         pstmt = conn.prepareStatement(sql);
         pstmt.setInt(1, qno);
         rs = pstmt.executeQuery();
@@ -359,7 +276,7 @@
             qna.setQno(rs.getInt("qno"));
             qna.setTitle(rs.getString("title"));
             qna.setContent(rs.getString("content"));
-            qna.setName(rs.getString("name"));
+            qna.setAuthor(rs.getString("author"));
 
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             Date d = sdf.parse(rs.getString("resdate"));
@@ -387,7 +304,7 @@
                     <tbody>
                     <tr>
                         <td class="label"> 작성자 </td>
-                        <td> <%=qna.getName()%> </td>
+                        <td> <%=qna.getAuthor()%> </td>
                         <td class="label"> 작성일 </td>
                         <td> <%=qna.getResdate()%> </td>
                     </tr>

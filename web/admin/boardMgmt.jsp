@@ -266,12 +266,14 @@
     <div class="contents" id="contents">
         <div class="content_header">
             <div class="breadcrumb">
-                <p><a href="/">Home</a> &gt; <a href=/admin/adminPage.jsp">관리자 페이지</a> &gt; <span> 학부모 커뮤니티 관리 </span> </p>
-                <h2 class="page_tit"> 자유게시판 관리 </h2>
+                <p><a href="/">Home</a> &gt; <a href=/admin/adminPage.jsp">관리자 페이지</a> &gt; <span> 커뮤니티 관리 </span> </p>
+                <h2 class="page_tit"> 관리자 페이지 </h2>
             </div>
         </div>
         <section class="page" id="page1">
             <div class="page_wrap">
+                <p class="content_tit"> 학부모 커뮤니티 관리 </p>
+                <hr>
                 <div class="board_list_wrap">
                     <div class="board_list">
                         <div class="top">
